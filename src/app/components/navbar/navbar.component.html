@@ -1,0 +1,24 @@
+<!-- start navbar -->
+<div class="md:fixed w-full top-0 z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
+    <!-- navbar content -->
+    <div id="navbar" class="w-full flex flex-row flex-wrap justify-between items-center">
+      <button (click)="slideSideBar()" class="text-right text-gray-900 block">
+        <i class="fad fa-list-ul"></i>
+      </button>
+      <div class="dropdown static">
+          <button (click)="toggleDropdown()" class="text-gray-500 menu-btn p-0 m-0 hover:text-gray-900 focus:text-gray-900 focus:outline-none transition-all ease-in-out duration-300">
+            <i class="fad fa-bells"></i>               
+          </button>
+          <div [ngClass]="{hidden: !notificationsDropped}" class="menu rounded bg-white w-full border-box right-0 md:shadow-md absolute md:w-96 z-40 mt-5 py-2 animated faster">
+            <div class="px-4 py-2 flex flex-row justify-between items-center capitalize font-semibold text-sm">
+              <h1>notifications</h1>
+              <div class="bg-teal-100 border border-teal-200 text-teal-500 text-xs rounded px-1">
+                <strong>{{ notifications.length }}</strong>
+              </div>
+            </div>
+            <hr>
+          <app-notification *ngFor="let notification of notifications" [notification]="notification"></app-notification>
+        </div>
+      </div>
+    </div>
+  </div>

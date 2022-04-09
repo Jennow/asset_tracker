@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'asset_tracker';
+  mobileSlideBarOpen = false;
+  // cards: Card = [];
+  toggleMobileSidebar() {
+    console.log('HI')
+    this.mobileSlideBarOpen = !this.mobileSlideBarOpen;
+  }
 }

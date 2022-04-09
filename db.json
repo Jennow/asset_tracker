@@ -1,0 +1,130 @@
+{
+    "assets": [
+        {
+            "id": 1,
+            "name": "Bitcoin",
+            "icon": "fab fa-bitcoin",
+            "type": "Crypto",
+            "subtype": "static",
+            "currencyId": 1,
+            "platform": "Binance",
+            "highlighted": true,
+            "performance": 80,
+            "sum": 1000
+        },
+        {
+            "id": 2,
+            "name": "MSCI World ESG",
+            "type": "ETF",
+            "subtype": "static",
+            "currencyId": 1,
+            "platform": "Trade Republic",
+            "highlighted": true,
+            "performance": 8,
+            "sum": 980
+        },
+        {
+            "id": 3,
+            "name": "Disney Stock",
+            "type": "Stock",
+            "subtype": "static",
+            "currencyId": 1,
+            "platform": "Trade Republic",
+            "performance": -0.8,
+            "highlighted": true,
+            "sum": 1000
+        },
+        {
+            "id": 4,
+            "name": "Tesla Stock",
+            "icon": "fad fa-charging-station",
+            "type": "Stock",
+            "subtype": "static",
+            "currencyId": 1,
+            "platform": "Trade Republic",
+            "performance": 1000,
+            "highlighted": true,
+            "sum": 100
+        }
+    ],
+    "currencies":[
+        {
+            "id": 1,
+            "identifier": "euro",
+            "short": "€"
+        },
+        {
+            "id": 2,
+            "identifier": "us-dollar",
+            "short": "$"
+        }
+    ],
+    "notifications": [
+        {
+            "id": 1,
+            "title": "New transaction",
+            "text": "Automaticly added a transaction to asset 'MSCI World ESG'",
+            "icon": "fad fa-file-plus",
+            "createdate": "2022-04-05T18:25:43.511Z"
+        },
+        {
+            "id": 2,
+            "title": "Great revenue",
+            "text": "Your assets of type 'Stocks' performed great last week",
+            "icon": "fad fa-money-bill",
+            "createdate": "2022-04-05T18:25:43.511Z"
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "login": "jeniprochnow",
+            "password": "***",
+            "currencyId": 1
+        }
+    ],
+    "transactions": [
+        {
+            "id":1,
+            "assetId": 1,
+            "createdate": "2012-04-23T18:25:43.511Z",
+            "value": 100,
+            "status": 1
+        },
+        {
+            "id":2,
+            "assetId": 2,
+            "createdate": "2022-04-01T18:25:43.511Z",
+            "value": -80,
+            "status": 1
+        },
+        {
+            "id":3,
+            "assetId": 2,
+            "createdate": "2022-04-02T18:25:43.511Z",
+            "value": 100,
+            "status": 1
+        },
+        {
+            "id":4,
+            "assetId": 3,
+            "createdate": "2022-04-03T18:25:43.511Z",
+            "value": -50,
+            "status": 0
+        },
+        {
+            "id":5,
+            "assetId": 1,
+            "createdate": "2022-04-04T18:25:43.511Z",
+            "value": 100,
+            "status": 1
+        },
+        {
+            "id":6,
+            "assetId": 3,
+            "createdate": "2022-04-05T18:25:43.511Z",
+            "value": 300,
+            "status": 1
+        }
+    ]
+}

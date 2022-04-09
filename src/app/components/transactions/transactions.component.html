@@ -1,0 +1,19 @@
+<div class="card-header">Transactions</div>
+<table class="table-auto w-full text-left">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 border-r"></th>
+            <th class="px-4 py-2 border-r">asset</th>
+            <th class="px-4 py-2 border-r">amount</th>
+            <th class="px-4 py-2">date</th>
+        </tr>
+    </thead>
+    <tbody class="text-gray-600">
+        <tr [ngClass]="transaction.status ? '' : 'text-red-500'"  *ngFor="let transaction of transactions">                    
+            <td [ngClass]="transaction.status ? 'text-green-500' : 'text-red-500'"  class="border border-l-0 px-4 py-2 text-center"><i class="fad fa-circle"></i></td>
+            <td class="border border-l-0 px-4 py-2">{{ transaction.asset.name }}</td>
+            <td class="border border-l-0 px-4 py-2">{{ transaction.value }} {{ user ? user.currency.short : '' }}</td>
+            <td class="border border-l-0 border-r-0 px-4 py-2">{{ transaction.ago }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+  <!-- start sidebar -->
+  
+  <div  class="hidden md:block w-64 top-0 h-full"></div>
+  <div id="sideBar" [ngClass]="{'-ml-64': !open}" class="flex-col flex-wrap bg-white border-r border-gray-300 p-6 w-64 md:-ml-0 fixed md:flex top-0 z-30 h-full md:shadow-xl animated faster">
+    <div class="flex flex-col">
+      <div class="text-right md:hidden mb-4">
+        <button (click)="slideSideBar()">
+          <i class="fad fa-times-circle"></i>
+        </button>
+      </div>
+
+      <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
+
+      <app-sidebarlink
+        url=""
+        title="Analytics dashboard"
+        icon="fad fa-chart-pie"
+      ></app-sidebarlink>
+
+      <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">assets</p>
+
+      <app-sidebarlink
+        url="/stocks"
+        title="Stocks"
+        icon="fad fa-money-bill"
+      ></app-sidebarlink>
+      <app-sidebarlink
+        url="/crypto"
+        title="Crypto"
+        icon="fab fa-bitcoin"
+      ></app-sidebarlink>
+    
+      <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">actions</p>
+    
+      <app-sidebarlink
+        url="/add_asset"
+        title="Add Asset"
+        icon="fad fa-folder-plus"
+      ></app-sidebarlink>
+      <app-sidebarlink
+        url="/add_transaction"
+        title="Add Transaction"
+        icon="fad fa-file-plus"
+      ></app-sidebarlink>
+      <app-sidebarlink
+        url="/import_transaction"
+        title="Import Transactions"
+        icon="fad fa-file-import"
+      ></app-sidebarlink>
+      <app-sidebarlink
+        url="/export_transactions"
+        title="Export Transactions"
+        icon="fad fa-file-export"
+      ></app-sidebarlink>
+      <app-sidebarlink
+        url="/connect_to_api"
+        title="Connect API"
+        icon="fad fa-cloud"
+      ></app-sidebarlink>
+    </div>
+  </div>

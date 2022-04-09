@@ -1,0 +1,17 @@
+ <div class="report-card">
+    <div class="card">
+        <div class="card-body flex flex-col">
+            <div class="flex flex-row justify-between items-center">
+                <div [ngClass]="card.icon ? card.icon : 'fad fa-coins'" class="h6 text-indigo-700"></div>
+                <span [ngClass]="card.performance >= 0 ? 'bg-teal-400' : 'bg-red-400'" class="rounded-full text-white badge text-xs">
+                    {{ card.performance }} %
+                    <i [ngClass]="card.performance >= 0 ? 'fa-chevron-up' : 'fa-chevron-down'" class="fal ml-1"></i>
+                </span>
+            </div>
+            <div class="mt-8">
+                <h1 class="h5">{{ card.sum }} {{ user ? user.currency.short : '' }}</h1>
+                <p>{{ card.name }}</p>
+            </div>                
+        </div>
+    </div>
+</div>

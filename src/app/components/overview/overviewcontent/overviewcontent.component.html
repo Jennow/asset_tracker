@@ -1,0 +1,22 @@
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+    <div class="p-8">
+        <h1 class="h2">5,337 {{ user ? user.currency.short : '' }}</h1>
+        <p class="text-black font-medium">Total value</p>
+        <div class="mt-20 mb-2 flex items-center">
+            <div class="py-1 px-3 rounded bg-red-200 text-green-900 mr-3">
+                <i class="fa fa-caret-up"></i>
+            </div>
+            <p class="text-black"><span class="text-red-400">10</span><span class="text-red-400">% decrease</span> in comparison to last month.</p>
+        </div>
+        <div class="flex items-center">
+            <div class="py-1 px-3 rounded bg-green-200 text-red-900 mr-3">
+                <i class="fa fa-caret-down"></i>
+            </div>
+            <p class="text-black"><span class="text-green-400">50</span><span class="text-green-400">% increase</span> in comparison to last year.</p>
+        </div>
+        <a href="#" class="btn-shadow mt-6">view details</a>
+    </div>
+    <div>
+        <app-piechart [chart]="chart"></app-piechart>
+    </div>
+</div>
