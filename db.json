@@ -10,7 +10,7 @@
             "platform": "Binance",
             "highlighted": true,
             "performance": 80,
-            "sum": 1000
+            "sum": 40
         },
         {
             "id": 2,
@@ -45,6 +45,32 @@
             "performance": 1000,
             "highlighted": true,
             "sum": 100
+        }
+    ],
+    "assetHistories": [
+        {
+            "month": 3,
+            "year": 2022,
+            "assetId": 1,
+            "sum": 30
+        },
+        {
+            "month": 2,
+            "year": 2022,
+            "assetId": 1,
+            "sum": 19
+        },
+        {
+            "month": 1,
+            "year": 2022,
+            "assetId": 1,
+            "sum": 20
+        },
+        {
+            "month": 12,
+            "year": 2021,
+            "assetId": 1,
+            "sum": 18
         }
     ],
     "currencies":[

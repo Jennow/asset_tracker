@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'src/app/model/Chart';
 import { UserService } from 'src/app/services/collections/user.service';
 import { 
-  ApexNonAxisChartSeries, 
   ApexAxisChartSeries,
   ApexChart,
   ChartType,
@@ -17,13 +16,12 @@ import {
 
 
 @Component({
-  selector: 'app-areachart',
-  templateUrl: './areachart.component.html',
-  styleUrls: ['./areachart.component.css']
+  selector: 'app-linearchart',
+  templateUrl: './linearchart.component.html',
+  styleUrls: ['./linearchart.component.css']
 })
-export class AreachartComponent implements OnInit {
+export class LinearchartComponent implements OnInit {
   @Input() chart: Chart;
-  @Input() type: ChartType = 'area';
   @Input() height: number = 200;
   @Input() color: string = '#4fd1c5';
 
@@ -68,8 +66,9 @@ export class AreachartComponent implements OnInit {
   public user;
 
   constructor(private userService: UserService) { 
-    this.user = userService.getUser();
+    this.user = this.userService.getUser();
   }
+  
   ngOnInit(): void {
     this.apexChart = 
       {

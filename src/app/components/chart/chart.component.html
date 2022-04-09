@@ -1,25 +1,12 @@
-<div class="p-6 border-box">
-    <apx-chart
+<app-piechart  *ngIf="(chart.type === 'pie' || chart.type === 'donut');else linearchart"
     [chart]="chart"
-    [annotations]="annotations"
-    [colors]="colors"
-    [dataLabels]="dataLabels"
-    [series]="series"
-    [stroke]="stroke"
-    [labels]="labels"
-    [legend]="legend"
-    [fill]="fill"
-    [tooltip]="tooltip"
-    [plotOptions]="plotOptions"
-    [responsive]="responsive"
-    [xaxis]="xaxis"
-    [yaxis]="yaxis"
-    [grid]="grid"
-    [states]="states"
-    [title]="title"
-    [subtitle]="subtitle"
-    [theme]="theme"
-    ></apx-chart>
-</div>
+    [height]="height"
+></app-piechart>
 
+<ng-template #linearchart>
+    <app-linearchart
+        [chart]="chart"
+    >
+    </app-linearchart>
+</ng-template>
 

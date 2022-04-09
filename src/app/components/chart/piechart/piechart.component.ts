@@ -1,22 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { 
   ApexNonAxisChartSeries, 
-  ApexAxisChartSeries,
-  ApexTitleSubtitle, 
   ApexChart,
-  ApexGrid,
-  ApexDataLabels,
   ApexLegend,
-  ApexFill,
-  ApexStroke,
-  ApexYAxis,
-  ApexXAxis,
-  ApexAnnotations,
-  ApexTooltip,
-  ApexPlotOptions,
   ApexResponsive,
-  ApexStates,
-  ApexTheme,
   ChartType
 } from 'ng-apexcharts';
 import { Chart } from 'src/app/model/Chart';
@@ -30,13 +17,12 @@ export class PiechartComponent implements OnInit {
   @Input() chart: Chart;
   @Input() type: ChartType = 'pie';
   @Input() height: number = 300;
-  @Input() numbers: Array<number> = [1,2,3,4,5,6,7,8,9];
-  @Input() color: string = '#4fd1c5';
   
   series: ApexNonAxisChartSeries; 
   apexChart: ApexChart;
   legend: ApexLegend = {
-    position: 'bottom'
+    show: true,
+    position: 'right'
   }
   responsive: ApexResponsive[] = [{
     breakpoint: 480,
@@ -45,7 +31,7 @@ export class PiechartComponent implements OnInit {
         width: '100%',
       },
       legend: {
-        position: 'right'
+        position: 'bottom'
       }
     }
   }]

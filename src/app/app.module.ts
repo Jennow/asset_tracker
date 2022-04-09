@@ -21,7 +21,7 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { SidebarlinkComponent } from './components/sidebar/sidebarlink/sidebarlink.component';
 import { NotificationComponent } from './components/navbar/notification/notification.component';
 import { UserService } from './services/collections/user.service';
-import { AreachartComponent } from './components/chart/areachart/areachart.component';
+import { LinearchartComponent } from './components/chart/linearchart/linearchart.component';
 import { PiechartComponent } from './components/chart/piechart/piechart.component';
 
 @NgModule({
@@ -41,7 +41,7 @@ import { PiechartComponent } from './components/chart/piechart/piechart.componen
     TransactionsComponent,
     SidebarlinkComponent,
     NotificationComponent,
-    AreachartComponent,
+    LinearchartComponent,
     PiechartComponent
   ],
   imports: [
