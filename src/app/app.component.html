@@ -1,38 +1,10 @@
 <app-navbar (toggleMobileSidebar)="toggleMobileSidebar()"></app-navbar>
 <!-- strat wrapper -->
-<div class="h-screen flex flex-row flex-wrap">
+
+<div class="h-screen md:flex flex-row">
     <app-sidebar [open]="mobileSlideBarOpen" (toggleMobileSidebar)="toggleMobileSidebar()"></app-sidebar>
-    <div class="bg-gray-100 flex-1 p-6 md:mt-16"> 
-        <app-overview></app-overview>
-        <div class="mt-6">
-            <app-cards></app-cards>
-        </div>
-        <!-- <div class=" grid xl:grid-cols-2 gap-6 grid-cols-1"> -->
-
-        <div class="mt-6">
-        </div>    
-            <!-- <div class="flex flex-col"> -->
-                <!-- <app-hint 
-                    text="Hi! Welcome to your personalAsset Tracker!"
-                    customClass="alert-dark"
-                ></app-hint> -->
-            <!-- </div> -->
-        <!-- </div> -->
-        <div class="mt-6">
-            <app-charts></app-charts>
-        </div>
-
-        <!-- <app-numbers></app-numbers> -->
-
-        <div class="grid grid-cols-2 gap-6">
-            <div class="card col-span-2 xl:col-span-1 mt-6">
-                <app-transactions></app-transactions>
-            </div>
-            <div class="card col-span-2 xl:col-span-1 mt-6">
-                <app-teaser></app-teaser>
-            </div>
-        </div>
-
+    <div class="bg-gray-100 flex-1 p-6 md:mt-16 md:mb-6 h-max"> 
+        <router-outlet></router-outlet>
     </div>
 <!-- end content -->
 </div>

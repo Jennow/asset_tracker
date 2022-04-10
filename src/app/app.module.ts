@@ -13,17 +13,31 @@ import { CardComponent } from './components/cards/card/card.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { TeaserComponent } from './components/teaser/teaser.component';
 import { ChartComponent } from './components/chart/chart.component';
-import { ChartsComponent } from './components/charts/charts.component';
+import { AssetsummariesComponent } from './components/assetsummaries/assetsummaries.component';
 import { OverviewComponent } from './components/overview/overview.component';
-import { OverviewheaderComponent } from './components/overview/overviewheader/overviewheader.component';
-import { OverviewcontentComponent } from './components/overview/overviewcontent/overviewcontent.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { SidebarlinkComponent } from './components/sidebar/sidebarlink/sidebarlink.component';
 import { NotificationComponent } from './components/navbar/notification/notification.component';
 import { UserService } from './services/collections/user.service';
 import { LinearchartComponent } from './components/chart/linearchart/linearchart.component';
 import { PiechartComponent } from './components/chart/piechart/piechart.component';
+import { ApiService } from './services/api.service';
+import { AbstractCollectionService } from './services/collections/abstractcollection.service';
+import { CandlestickchartComponent } from './components/chart/candlestickchart/candlestickchart.component';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AddTransactionComponent } from './pages/add-transaction/add-transaction.component';
 
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: DashboardComponent
+  },
+  {
+    path: 'add_transaction',
+    component: AddTransactionComponent
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,24 +48,28 @@ import { PiechartComponent } from './components/chart/piechart/piechart.componen
     CardsComponent,
     TeaserComponent,
     ChartComponent,
-    ChartsComponent,
+    AssetsummariesComponent,
     OverviewComponent,
-    OverviewheaderComponent,
-    OverviewcontentComponent,
     TransactionsComponent,
     SidebarlinkComponent,
     NotificationComponent,
     LinearchartComponent,
-    PiechartComponent
+    PiechartComponent,
+    CandlestickchartComponent,
+    DashboardComponent,
+    AddTransactionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    UserService
+    AbstractCollectionService,
+    UserService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AbstractCollectionService {
-  protected apiService: ApiService;
 
-  constructor(protected http:HttpClient) { 
-    this.apiService = new ApiService();
+  constructor(protected http:HttpClient,  protected apiService:ApiService,protected userService:UserService) { 
   }
 }

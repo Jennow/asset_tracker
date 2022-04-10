@@ -35,31 +35,14 @@ export class LinearchartComponent implements OnInit {
         left: 0    
     }
   }
-  dataLabels: ApexDataLabels = {
-    enabled: false
-  }
-  legend: ApexLegend = {
-    show: false
-  }
+  dataLabels: ApexDataLabels;
+  legend: ApexLegend;
   fill: ApexFill;
-  stroke: ApexStroke = {
-    colors: ['#4fd1c5'],
-    width: 3
-  }
-  yaxis: ApexYAxis = {
-    show: false
-  }
+  stroke: ApexStroke;
+  yaxis: ApexYAxis;
   xaxis: ApexXAxis = {
-    labels: {
-        show: false,
-    },   
-    axisBorder: {
-      show: false,        
-    },   
-    tooltip: {
-        enabled: false,
-    }
-  }
+    type: 'datetime',
+  };
 
   series: ApexAxisChartSeries; 
 
@@ -94,6 +77,10 @@ export class LinearchartComponent implements OnInit {
     this.stroke = {
       colors: [this.color],
       width: 3
+    }
+    if (this.chart.xaxis) {
+      console.log(this.chart)
+      this.xaxis = this.chart.xaxis;
     }
   }
 }

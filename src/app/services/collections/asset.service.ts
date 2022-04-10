@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable, switchMap } from 'rxjs';
-import { AssetHistory } from 'src/app/model/AssetHistory';
+import { Observable } from 'rxjs';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Asset } from '../../model/Asset';
 import { AbstractCollectionService } from './abstractcollection.service';
@@ -11,31 +9,38 @@ import { AbstractCollectionService } from './abstractcollection.service';
 })
 
 export class AssetService extends AbstractCollectionService {
-  getAllAssets() {
-    const url = this.apiService.getApiUrl() + 'assets';
+  getAssets(filter?:string) {
+    filter = filter?filter:'';
+    const url = this.apiService.getApiUrl() + 'assets' + filter;
     return this.http.get<Asset[]>(url)
   }
 
   getCards(): Observable<Asset[]> {
-    const url = this.apiService.getApiUrl() + 'assets?highlighted=true';
-    return this.http.get<Asset[]>(url)
+    return this.getAssets('?highlighted=true')
   }
   
-  getSummary(assets: Array<Asset>): Observable<any> {
+  getSummary(assets: Array<Asset>): AssetSummary {
     let total = 0;
-    assets.forEach((value: Asset) => total += value.sum);
-    const summary = {
-          sum: total,
-          comparisonLastMonth: -10, // TODO: Get this value fom history
-          comparisonLastYear: 2,    // TODO: Get this value from history
-        } as AssetSummary;
+    let chartData:Array<number> = [];
+    let labels:Array<string> = [];
 
-    return new Observable<AssetSummary>(observer => {
-      observer.next(summary)
+    assets.forEach((asset: Asset) =>  {
+        total += asset.sum
+        chartData.push(asset.sum)
+        labels.push(asset.name)
     });
-  }
-  
-  getHistory() {
-
+    return {
+      sum: total,
+      comparisonLastMonth: -10, // TODO: Get this value fom history
+      comparisonLastYear: 2,    // TODO: Get this value from history
+      piechart: {
+        "title": "assets",
+        "icon": "fa-store",
+        "type": "pie",
+        "data": chartData,
+        "labels": labels,
+        "sum": 300,
+      }
+    } as AssetSummary;   
   }
 }

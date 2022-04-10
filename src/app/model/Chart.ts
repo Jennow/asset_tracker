@@ -1,10 +1,13 @@
+import { ChartType } from "ng-apexcharts";
+
 export interface Chart {
     id?: number,
-    title: string,
-    icon: string,
+    title?: string,
+    icon?: string,
     sum?: number,
-    type: string,
+    type: ChartType,
     data: Array<any>, 
-    labels?: Array<any>, 
+    labels?: Array<any>,
+    xaxis?: object,
 }
 

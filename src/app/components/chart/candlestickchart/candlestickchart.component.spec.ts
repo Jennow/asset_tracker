@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OverviewcontentComponent } from './overviewcontent.component';
+import { CandlestickchartComponent } from './candlestickchart.component';
 
-describe('OverviewcontentComponent', () => {
-  let component: OverviewcontentComponent;
-  let fixture: ComponentFixture<OverviewcontentComponent>;
+describe('CandlestickchartComponent', () => {
+  let component: CandlestickchartComponent;
+  let fixture: ComponentFixture<CandlestickchartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OverviewcontentComponent ]
+      declarations: [ CandlestickchartComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OverviewcontentComponent);
+    fixture = TestBed.createComponent(CandlestickchartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
