@@ -11,4 +11,9 @@ export class TransactionService extends AbstractCollectionService {
     const url = this.apiService.getApiUrl() + 'transactions?_expand=asset';
     return this.http.get<Transaction[]>(url);
   }
+
+  saveTransaction(transaction:any) {
+    const url = this.apiService.getApiUrl() + 'transactions?_expand=asset';
+    return this.http.post(url, transaction);
+  }
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Asset } from 'src/app/model/Asset';
+import { Transaction } from 'src/app/model/Transaction';
+import { AssetService } from 'src/app/services/collections/asset.service';
+import { TransactionService } from 'src/app/services/collections/transaction.service';
 
 @Component({
   selector: 'app-add-transaction',
@@ -6,10 +10,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-transaction.component.css']
 })
 export class AddTransactionComponent implements OnInit {
+  assets:Array<Asset>;
+  value:number;
+  selectedAsset:Asset;
+  date:string;
 
-  constructor() { }
+  
+  constructor(private assetService: AssetService, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
+    this.date = new Date().toISOString().split('T')[0];
+    this.assetService.getAssets().subscribe((assets) => {
+      this.assets = assets
+    });
+  }
+
+  saveTransaction() {
+    // TODO: Beautify form validation
+    console.log(this.selectedAsset)
+    console.log(this.value)
+    console.log(this.date)
+    if (!this.selectedAsset || !this.value || !this.date) {
+      alert('Please fill out form!');
+      return;
+    }
+    const transaction = {
+      value: this.value,
+      createdate: this.date,
+      assetId: this.selectedAsset.id,
+      status: 1,
+    };
+    this.transactionService.saveTransaction(transaction).subscribe((response) => {
+      console.log(response)
+    });
   }
 
 }

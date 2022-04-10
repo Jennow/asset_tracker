@@ -1,156 +1,177 @@
 {
-    "assets": [
+  "assets": [
+    {
+      "id": 1,
+      "identifier": "bitcoin",
+      "name": "Bitcoin",
+      "icon": "fab fa-bitcoin",
+      "type": "crypto",
+      "subtype": "static",
+      "currencyId": 1,
+      "platform": "Binance",
+      "highlighted": true,
+      "performance": 80,
+      "amount": 0.001,
+      "sum": 100,
+      "history": [
         {
-            "id": 1,
-            "identifier": "bitcoin",
-            "name": "Bitcoin",
-            "icon": "fab fa-bitcoin",
-            "type": "crypto",
-            "subtype": "static",
-            "currencyId": 1,
-            "platform": "Binance",
-            "highlighted": true,
-            "performance": 80,
-            "amount": 0.001,
-            "sum": 100,
-            "history": [
-                {
-                    "date": "2022-04-05T18:25:43.511Z",
-                    "amount": 30
-                },
-                {
-                    "date": "2022-04-04T18:25:43.511Z",
-                    "amount": 19
-                },
-                {
-                    "date": "2022-04-03T18:25:43.511Z",
-                    "amount": 20
-                },
-                {
-                    "date": "2022-04-01T18:25:43.511Z",
-                    "amount": 18
-                }
-            ]
+          "date": "2022-04-05T18:25:43.511Z",
+          "amount": 30
         },
         {
-            "id": 2,
-            "identifier":"MSCI",
-            "name": "MSCI World ESG",
-            "type": "stock",
-            "subtype": "etf",
-            "currencyId": 1,
-            "platform": "Trade Republic",
-            "highlighted": true,
-            "performance": 8,
-            "amount": 50,
-            "sum": 542.55 
+          "date": "2022-04-04T18:25:43.511Z",
+          "amount": 19
         },
         {
-            "id": 3,
-            "identifier": "DIS",
-            "name": "Disney Stock",
-            "type": "stock",
-            "subtype": "static",
-            "currencyId": 1,
-            "platform": "Trade Republic",
-            "performance": -0.8,
-            "highlighted": true,
-            "amount": 10,
-            "sum": 200 
+          "date": "2022-04-03T18:25:43.511Z",
+          "amount": 20
         },
         {
-            "id": 4,
-            "identifier": "TSL",
-            "name": "Tesla Stock",
-            "icon": "fad fa-charging-station",
-            "type": "stock",
-            "subtype": "static",
-            "currencyId": 1,
-            "platform": "Trade Republic",
-            "performance": 1000,
-            "highlighted": true,
-            "amount": 0.2,
-            "sum": 100
+          "date": "2022-04-01T18:25:43.511Z",
+          "amount": 18
         }
-    ],
-    "currencies":[
-        {
-            "id": 1,
-            "identifier": "EUR",
-            "short": "€"
-        },
-        {
-            "id": 2,
-            "identifier": "USD",
-            "short": "$"
-        }
-    ],
-    "notifications": [
-        {
-            "id": 1,
-            "title": "New transaction",
-            "text": "Automaticly added a transaction to asset 'MSCI World ESG'",
-            "icon": "fad fa-file-plus",
-            "createdate": "2022-04-05T18:25:43.511Z"
-        },
-        {
-            "id": 2,
-            "title": "Great revenue",
-            "text": "Your assets of type 'Stocks' performed great last week",
-            "icon": "fad fa-money-bill",
-            "createdate": "2022-04-05T18:25:43.511Z"
-        }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "login": "jeniprochnow",
-            "password": "***",
-            "currencyId": 2
-        }
-    ],
-    "transactions": [
-        {
-            "id":1,
-            "assetId": 1,
-            "createdate": "2012-04-23T18:25:43.511Z",
-            "value": 100,
-            "status": 1
-        },
-        {
-            "id":2,
-            "assetId": 2,
-            "createdate": "2022-04-01T18:25:43.511Z",
-            "value": -80,
-            "status": 1
-        },
-        {
-            "id":3,
-            "assetId": 2,
-            "createdate": "2022-04-02T18:25:43.511Z",
-            "value": 100,
-            "status": 1
-        },
-        {
-            "id":4,
-            "assetId": 3,
-            "createdate": "2022-04-03T18:25:43.511Z",
-            "value": -50,
-            "status": 0
-        },
-        {
-            "id":5,
-            "assetId": 1,
-            "createdate": "2022-04-04T18:25:43.511Z",
-            "value": 100,
-            "status": 1
-        },
-        {
-            "id":6,
-            "assetId": 3,
-            "createdate": "2022-04-05T18:25:43.511Z",
-            "value": 300,
-            "status": 1
-        }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "identifier": "MSCI",
+      "name": "MSCI World ESG",
+      "type": "stock",
+      "subtype": "etf",
+      "currencyId": 1,
+      "platform": "Trade Republic",
+      "highlighted": true,
+      "performance": 8,
+      "amount": 50,
+      "sum": 542.55
+    },
+    {
+      "id": 3,
+      "identifier": "DIS",
+      "name": "Disney Stock",
+      "type": "stock",
+      "subtype": "static",
+      "currencyId": 1,
+      "platform": "Trade Republic",
+      "performance": -0.8,
+      "highlighted": true,
+      "amount": 10,
+      "sum": 200
+    },
+    {
+      "id": 4,
+      "identifier": "TSL",
+      "name": "Tesla Stock",
+      "icon": "fad fa-charging-station",
+      "type": "stock",
+      "subtype": "static",
+      "currencyId": 1,
+      "platform": "Trade Republic",
+      "performance": 1000,
+      "highlighted": true,
+      "amount": 0.2,
+      "sum": 100
+    }
+  ],
+  "currencies": [
+    {
+      "id": 1,
+      "identifier": "EUR",
+      "short": "€"
+    },
+    {
+      "id": 2,
+      "identifier": "USD",
+      "short": "$"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "title": "New transaction",
+      "text": "Automaticly added a transaction to asset 'MSCI World ESG'",
+      "icon": "fad fa-file-plus",
+      "createdate": "2022-04-05T18:25:43.511Z"
+    },
+    {
+      "id": 2,
+      "title": "Great revenue",
+      "text": "Your assets of type 'Stocks' performed great last week",
+      "icon": "fad fa-money-bill",
+      "createdate": "2022-04-05T18:25:43.511Z"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "login": "jeniprochnow",
+      "password": "***",
+      "currencyId": 2
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "assetId": 1,
+      "createdate": "2012-04-23T18:25:43.511Z",
+      "value": 100,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "assetId": 2,
+      "createdate": "2022-04-01T18:25:43.511Z",
+      "value": -80,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "assetId": 2,
+      "createdate": "2022-04-02T18:25:43.511Z",
+      "value": 100,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "assetId": 3,
+      "createdate": "2022-04-03T18:25:43.511Z",
+      "value": -50,
+      "status": 0
+    },
+    {
+      "id": 5,
+      "assetId": 1,
+      "createdate": "2022-04-04T18:25:43.511Z",
+      "value": 100,
+      "status": 1
+    },
+    {
+      "id": 6,
+      "assetId": 3,
+      "createdate": "2022-04-05T18:25:43.511Z",
+      "value": 300,
+      "status": 1
+    },
+    {
+      "value": 0.6,
+      "createdate": "2022-04-10",
+      "assetId": 1,
+      "status": 1,
+      "id": 8
+    },
+    {
+      "value": 3,
+      "createdate": "2022-04-10",
+      "assetId": 3,
+      "status": 1,
+      "id": 9
+    },
+    {
+      "value": 3,
+      "createdate": "2022-04-10",
+      "assetId": 3,
+      "status": 1,
+      "id": 10
+    }
+  ]
 }
