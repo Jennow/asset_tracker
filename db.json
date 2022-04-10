@@ -56,7 +56,8 @@
       "performance": -0.8,
       "highlighted": true,
       "amount": 10,
-      "sum": 200
+      "sum": 200,
+      "history": []
     },
     {
       "id": 4,
@@ -70,7 +71,8 @@
       "performance": 1000,
       "highlighted": true,
       "amount": 0.2,
-      "sum": 100
+      "sum": 100,
+      "history": []
     }
   ],
   "currencies": [

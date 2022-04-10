@@ -27,9 +27,6 @@ export class AddTransactionComponent implements OnInit {
 
   saveTransaction() {
     // TODO: Beautify form validation
-    console.log(this.selectedAsset)
-    console.log(this.value)
-    console.log(this.date)
     if (!this.selectedAsset || !this.value || !this.date) {
       alert('Please fill out form!');
       return;
@@ -37,7 +34,7 @@ export class AddTransactionComponent implements OnInit {
     const transaction = {
       value: this.value,
       createdate: this.date,
-      assetId: this.selectedAsset.id,
+      asset: this.selectedAsset,
       status: 1,
     };
     this.transactionService.saveTransaction(transaction).subscribe((response) => {

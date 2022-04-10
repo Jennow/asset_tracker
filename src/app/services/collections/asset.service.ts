@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
+import { AssetType } from 'src/app/enums/AssetType';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Asset } from '../../model/Asset';
 import { AbstractCollectionService } from './abstractcollection.service';
@@ -9,6 +10,7 @@ import { AbstractCollectionService } from './abstractcollection.service';
 })
 
 export class AssetService extends AbstractCollectionService {
+
   getAssets(filter?:string) {
     filter = filter?filter:'';
     const url = this.apiService.getApiUrl() + 'assets' + filter;
@@ -43,4 +45,17 @@ export class AssetService extends AbstractCollectionService {
       }
     } as AssetSummary;   
   }
+
+  getExchangeRate(asset:Asset) {
+    if (asset.type === AssetType.crypto) {
+      const apiUrl   = 'https://api.coincap.io';
+      return this.http.get(apiUrl + '/v2/assets/' + asset.identifier).pipe(
+        switchMap((response:any) => {
+          return of(Math.round(response.data.priceUsd * 100) / 100)
+        })
+      )
+    }
+    return of(Math.floor((Math.random() * 500) + 10));
+  }
+
 }

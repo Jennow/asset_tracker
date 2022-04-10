@@ -22,8 +22,8 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.assetService.getAssets().subscribe((assets: Array<Asset>) => {
-        this.summary = this.assetService.getSummary(assets);
-        this.chart = this.summary.piechart;
+      this.summary = this.assetService.getSummary(assets);
+      this.chart   = this.summary.piechart;
     });
   }
 }
