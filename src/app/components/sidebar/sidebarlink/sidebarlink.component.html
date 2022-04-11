@@ -1,4 +1,4 @@
-<a [routerLink]="url" class="block mb-3 capitalize font-medium text-m hover:text-teal-600 transition ease-in-out duration-500">
+<a [ngClass]="{'disabled': disabled}" [routerLink]="url" class="block mb-3 capitalize font-medium text-m hover:text-teal-600 transition ease-in-out duration-500">
   <i [ngClass]="icon" class="text-m w-10"></i>                
   {{ title }}
 </a>

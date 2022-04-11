@@ -23,11 +23,13 @@
         url="/stocks"
         title="Stocks"
         icon="fad fa-money-bill"
+        [disabled]="true"
       ></app-sidebarlink>
       <app-sidebarlink
         url="/crypto"
         title="Crypto"
         icon="fab fa-bitcoin"
+        [disabled]="true"
       ></app-sidebarlink>
     
       <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">actions</p>
@@ -36,6 +38,7 @@
         url="/add_asset"
         title="Add Asset"
         icon="fad fa-folder-plus"
+        [disabled]="true"
       ></app-sidebarlink>
       <app-sidebarlink
         url="/add_transaction"
@@ -46,16 +49,19 @@
         url="/import_transaction"
         title="Import Transactions"
         icon="fad fa-file-import"
+        [disabled]="true"
       ></app-sidebarlink>
       <app-sidebarlink
         url="/export_transactions"
         title="Export Transactions"
         icon="fad fa-file-export"
+        [disabled]="true"
       ></app-sidebarlink>
       <app-sidebarlink
         url="/connect_to_api"
         title="Connect API"
         icon="fad fa-cloud"
+        [disabled]="true"
       ></app-sidebarlink>
     </div>
   </div>

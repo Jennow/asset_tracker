@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   mobileSlideBarOpen = false;
   // cards: Card = [];
-  toggleMobileSidebar() {
-    console.log('HI')
-    this.mobileSlideBarOpen = !this.mobileSlideBarOpen;
+  constructor(private router: Router) {
+    router.events.forEach((event) => {
+      if(event instanceof NavigationStart) {
+        this.toggleMobileSidebar(false);
+      }
+    });
+  }
+
+  toggleMobileSidebar(open?: boolean) {
+    if (open === true || open === false) {
+      this.mobileSlideBarOpen = open;
+    } else {
+      this.mobileSlideBarOpen = !this.mobileSlideBarOpen;
+    }
   }
 }

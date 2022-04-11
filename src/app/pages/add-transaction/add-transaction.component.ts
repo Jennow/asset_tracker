@@ -11,7 +11,7 @@ import { TransactionService } from 'src/app/services/collections/transaction.ser
 })
 export class AddTransactionComponent implements OnInit {
   assets:Array<Asset>;
-  value:number;
+  amount:number;
   selectedAsset:Asset;
   date:string;
 
@@ -27,12 +27,12 @@ export class AddTransactionComponent implements OnInit {
 
   saveTransaction() {
     // TODO: Beautify form validation
-    if (!this.selectedAsset || !this.value || !this.date) {
+    if (!this.selectedAsset || !this.amount || !this.date) {
       alert('Please fill out form!');
       return;
     }
     const transaction = {
-      value: this.value,
+      amount: this.amount,
       createdate: this.date,
       asset: this.selectedAsset,
       status: 1,

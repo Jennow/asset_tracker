@@ -4,7 +4,7 @@ export interface Transaction {
     id?: number,
     asset: Asset,
     createdate: string,
-    value: number,
+    amount: number,
     status: number,
     ago?: string
 }
