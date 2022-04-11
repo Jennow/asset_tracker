@@ -19,7 +19,7 @@ export class UserService {
    * 1. check shared service if variable is already set
    * 2. check localstorage if user is saved there
    * 3. get user from database (Later redirect to login and ask user to reauthenticate)
-   * @returns 
+   * @returns User
    */
   getUser():User {
     if (this.user !== null) {

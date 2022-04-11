@@ -16,6 +16,10 @@ export class TransactionService extends AbstractCollectionService {
   constructor(override http:HttpClient,  override apiService:ApiService, override userService:UserService, protected assetService: AssetService) { 
     super(http, apiService, userService)
   }
+
+  /**
+   * @returns Observable<Transaction[]>
+   */
   getTransactions(): Observable<Transaction[]> {
     const url = this.apiService.getApiUrl() + 'transactions?_expand=asset';
     return this.http.get<Transaction[]>(url);
@@ -37,7 +41,6 @@ export class TransactionService extends AbstractCollectionService {
 
     return this.http.post(url, post).pipe(
       switchMap((value: Object, index: number) => {
-        console.log('SWICTHMAP');
         const url = this.apiService.getApiUrl() + 'assets/' + asset.id;
         return this.http.get(url);
       }),

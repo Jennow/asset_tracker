@@ -10,10 +10,10 @@ import { UserService } from 'src/app/services/collections/user.service';
 })
 export class CardComponent implements OnInit {
   @Input() card: Asset;
-  public user: User|null;
+  user: User|null;
 
   constructor(private userService: UserService) { 
-    this.user = userService.getUser();
+    this.user = this.userService.getUser();
   }
 
   ngOnInit(): void {

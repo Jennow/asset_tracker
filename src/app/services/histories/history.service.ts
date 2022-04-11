@@ -12,6 +12,12 @@ export class HistoryService {
   constructor(protected http:HttpClient,  protected apiService:ApiService,protected userService:UserService) { 
   }
 
+  /**
+   * Takes a HistoryItem and reformats it to use it as chartdata for a candlestick chart
+   * // TODO: Candlestick chart component not implemented yet
+   * @param history 
+   * @returns 
+   */
   formatHistoryForCandleStickChart(history:Array<HistoryItem>): Array<any> {
     let chartData:Array<object> = [];
     history.forEach((element:HistoryItem) => {
@@ -25,6 +31,11 @@ export class HistoryService {
     return chartData;
   }
 
+  /**
+   * Takes a HistoryItem and reformats it to use it as chartdata for a linear chart
+   * @param history 
+   * @returns 
+   */
   formatHistoryForLinearChart(history:Array<HistoryItem>): Array<Array<any>> {
     let chartData:Array<Array<any>> = [];
     history.forEach((element:HistoryItem) => {

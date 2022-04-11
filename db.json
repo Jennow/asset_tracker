@@ -12,7 +12,7 @@
       "highlighted": true,
       "performance": 80,
       "amount": 0.001,
-      "sum": 100,
+      "sum": 12690.063,
       "history": [
         {
           "date": "2022-04-05T18:25:43.511Z",
@@ -29,6 +29,10 @@
         {
           "date": "2022-04-01T18:25:43.511Z",
           "amount": 18
+        },
+        {
+          "date": "2022-04-11",
+          "amount": 0.3
         }
       ]
     },
@@ -71,8 +75,13 @@
       "performance": 1000,
       "highlighted": true,
       "amount": 0.2,
-      "sum": 100,
-      "history": []
+      "sum": 17100,
+      "history": [
+        {
+          "date": "2022-04-11",
+          "amount": 50
+        }
+      ]
     }
   ],
   "currencies": [
@@ -174,6 +183,27 @@
       "assetId": 3,
       "status": 1,
       "id": 10
+    },
+    {
+      "value": 0.3,
+      "createdate": "2022-04-11",
+      "status": 1,
+      "assetId": 1,
+      "id": 11
+    },
+    {
+      "value": 3,
+      "createdate": "2022-04-11",
+      "status": 1,
+      "assetId": 2,
+      "id": 12
+    },
+    {
+      "value": 50,
+      "createdate": "2022-04-11",
+      "status": 1,
+      "assetId": 4,
+      "id": 13
     }
   ]
 }

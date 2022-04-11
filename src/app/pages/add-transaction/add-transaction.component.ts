@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Asset } from 'src/app/model/Asset';
-import { Transaction } from 'src/app/model/Transaction';
 import { AssetService } from 'src/app/services/collections/asset.service';
 import { TransactionService } from 'src/app/services/collections/transaction.service';
 
@@ -16,7 +16,7 @@ export class AddTransactionComponent implements OnInit {
   date:string;
 
   
-  constructor(private assetService: AssetService, private transactionService: TransactionService) { }
+  constructor(private _router: Router, private assetService: AssetService, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
     this.date = new Date().toISOString().split('T')[0];
@@ -38,7 +38,8 @@ export class AddTransactionComponent implements OnInit {
       status: 1,
     };
     this.transactionService.saveTransaction(transaction).subscribe((response) => {
-      console.log(response)
+      // TODO: Handle errors
+      this._router.navigateByUrl('');
     });
   }
 

@@ -14,9 +14,10 @@ import { HistoryService } from './history.service';
 export class CryptohistoryService extends HistoryService {
 
   private lastMonth: Date;
+
   /**
-   * 
-   * @param asset 
+   * Get exchangerate history for asset from crypto market api
+   * @param asset
    * @returns Observable<any>
    */
   getHistory(asset:Asset): Observable<any> {
@@ -33,20 +34,30 @@ export class CryptohistoryService extends HistoryService {
     return this.http.get(url);
   }
 
+  /**
+   * Get histories of all passed assets
+   * @param assets 
+   * @returns Observable<Array<Asset>>
+   */
   getHistories(assets:Array<Asset>): Observable<Array<Asset>> {
     var observables = assets.map(
       (asset: Asset) => this.getHistory(asset));
     return forkJoin(observables);
   }
 
-  generateGraphFromHistories(historyDataArray:Array<any>, assets:Array<Asset>): Chart{
+  /**
+   * Combines histories of assets and reformats them to return a Chart object
+   * @param historyDataArray array of responses returned from crypto market api
+   * @param assets 
+   * @returns Chart
+   */
+  generateGraphFromHistories(historyDataArray:Array<any>, assets:Array<Asset>): Chart {
     var combinedHistory: Array<HistoryItem> = [];
 
     assets.forEach((asset:Asset, index:number) => {
       let histories: Array<CoinCapHistoryItem> = historyDataArray[index].data;
       
       let assetHistory = this.calculatePersonalHistoryForAsset(histories, asset)
-
       combinedHistory  = this.combineMultipleHistories(combinedHistory, assetHistory);
     });
     const chartData = this.formatHistoryForLinearChart(combinedHistory);
@@ -67,7 +78,6 @@ export class CryptohistoryService extends HistoryService {
 
   /**
    * Takes the history values and multiplies them with the amount of the asset at the moment
-   * 
    * @param history 
    * @param asset 
    * @returns Array<HistoryItem>

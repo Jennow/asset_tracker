@@ -16,12 +16,11 @@ export class NavbarComponent implements OnInit {
   constructor(private notificationService: NotificationService) {}
 
   ngOnInit(): void {
-    this.notificationService.getNotifications().subscribe(
-      (notifications) => {
+    this.notificationService.getNotifications().subscribe((notifications) => {
         this.notifications = notifications;
 
-        this.notifications.forEach((transaction, index) => {
-          this.notifications[index].ago = TimeformatService.ago(transaction.createdate);
+        this.notifications.forEach((notification, index) => {
+          this.notifications[index].ago = TimeformatService.ago(notification.createdate);
         });
       }
     );

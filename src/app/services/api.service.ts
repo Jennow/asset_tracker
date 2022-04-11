@@ -17,12 +17,4 @@ export class ApiService {
   getApiUrl():string {
     return this.apiUrl;
   }
-
-  getApiHeaders():Array<any> {
-    return this.headers;
-  }
-
-  setApiHeaders(headers: Array<any>) {
-    this.headers = headers;
-  }
 }

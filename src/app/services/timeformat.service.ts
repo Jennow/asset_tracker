@@ -15,12 +15,16 @@ export class TimeformatService {
     return`${since.property} ${since.end}${since.property > 1 ? "s" : ""} ago`;
   }
 
+  /**
+   * Calculates the time passed from a given date string to now
+   * @param dateStr 
+   * @returns 
+   */
   static timeSince(dateStr: string): Since {
     const date:Date = new Date(Date.parse(dateStr));
     const now:Date  = new Date(Date.now());
     const difftime  = now.getTime() - date.getTime();
-    //  TODO: Why 5.5 ???
-    const diffDate = new Date(difftime - 5.5 * 60 * 60 * 1000);
+    const diffDate  = new Date(difftime - 5.5 * 60 * 60 * 1000);
     const [sec, min, hr, day, month] = [
       diffDate.getSeconds(),
       diffDate.getMinutes(),

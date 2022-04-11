@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CardComponent } from './components/cards/card/card.component';
@@ -23,7 +22,6 @@ import { LinearchartComponent } from './components/chart/linearchart/linearchart
 import { PiechartComponent } from './components/chart/piechart/piechart.component';
 import { ApiService } from './services/api.service';
 import { AbstractCollectionService } from './services/collections/abstractcollection.service';
-import { CandlestickchartComponent } from './components/chart/candlestickchart/candlestickchart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddTransactionComponent } from './pages/add-transaction/add-transaction.component';
@@ -41,7 +39,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     NavbarComponent,
     SidebarComponent,
     CardComponent,
@@ -55,7 +52,6 @@ const appRoutes: Routes = [
     NotificationComponent,
     LinearchartComponent,
     PiechartComponent,
-    CandlestickchartComponent,
     DashboardComponent,
     AddTransactionComponent
   ],

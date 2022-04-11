@@ -14,8 +14,7 @@ export class CardsComponent implements OnInit {
   constructor(private assetService: AssetService) { }
 
   ngOnInit(): void {
-    this.assetService.getCards().subscribe(
-      (cards) => {
+    this.assetService.getCards().subscribe((cards) => {
         this.cards = cards;
       }
     );

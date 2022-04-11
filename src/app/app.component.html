@@ -1,11 +1,7 @@
 <app-navbar (toggleMobileSidebar)="toggleMobileSidebar()"></app-navbar>
-<!-- strat wrapper -->
-
 <div class="h-screen md:flex flex-row">
     <app-sidebar [open]="mobileSlideBarOpen" (toggleMobileSidebar)="toggleMobileSidebar()"></app-sidebar>
     <div class="bg-gray-100 flex-1 p-6 md:mt-16 md:mb-6 h-max"> 
         <router-outlet></router-outlet>
     </div>
-<!-- end content -->
 </div>
-<!-- end wrapper -->

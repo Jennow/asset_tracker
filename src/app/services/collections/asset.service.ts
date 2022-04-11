@@ -11,16 +11,28 @@ import { AbstractCollectionService } from './abstractcollection.service';
 
 export class AssetService extends AbstractCollectionService {
 
-  getAssets(filter?:string) {
-    filter = filter?filter:'';
+  /**
+   * @param filter 
+   * @returns Observable<Asset[]>
+   */
+  getAssets(filter:string = ''): Observable<Asset[]> {
     const url = this.apiService.getApiUrl() + 'assets' + filter;
     return this.http.get<Asset[]>(url)
   }
 
+  /**
+   * Get assets with the parameter highlighted set to true
+   * @returns Observable<Asset[]> 
+   */
   getCards(): Observable<Asset[]> {
     return this.getAssets('?highlighted=true')
   }
   
+  /**
+   * Generate summary data of asset array. Used in overview component
+   * @param assets 
+   * @returns AssetSummary
+   */
   getSummary(assets: Array<Asset>): AssetSummary {
     let total = 0;
     let chartData:Array<number> = [];
@@ -32,7 +44,7 @@ export class AssetService extends AbstractCollectionService {
         labels.push(asset.name)
     });
     return {
-      sum: total,
+      sum: Math.round(total * 100) / 100,
       comparisonLastMonth: -10, // TODO: Get this value fom history
       comparisonLastYear: 2,    // TODO: Get this value from history
       piechart: {
@@ -46,9 +58,15 @@ export class AssetService extends AbstractCollectionService {
     } as AssetSummary;   
   }
 
-  getExchangeRate(asset:Asset) {
+  /**
+   * Get Exchange rate of asset
+   * TODO: replace mock stock exchange rate with real api request
+   * @param asset 
+   * @returns Observable<number>
+   */
+  getExchangeRate(asset:Asset):Observable<number> {
     if (asset.type === AssetType.crypto) {
-      const apiUrl   = 'https://api.coincap.io';
+      const apiUrl = 'https://api.coincap.io';
       return this.http.get(apiUrl + '/v2/assets/' + asset.identifier).pipe(
         switchMap((response:any) => {
           return of(Math.round(response.data.priceUsd * 100) / 100)
@@ -57,5 +75,4 @@ export class AssetService extends AbstractCollectionService {
     }
     return of(Math.floor((Math.random() * 500) + 10));
   }
-
 }

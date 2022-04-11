@@ -7,6 +7,10 @@ import { AbstractCollectionService } from './abstractcollection.service';
   providedIn: 'root'
 })
 export class NotificationService extends AbstractCollectionService {
+  
+  /**
+   * @returns Observable<Notification[]>
+   */
   getNotifications(): Observable<Notification[]> {
     const url = this.apiService.getApiUrl() + 'notifications?_expand=asset';
     return this.http.get<Notification[]>(url)

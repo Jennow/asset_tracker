@@ -12,8 +12,9 @@ import {
   ApexStroke,
   ApexYAxis,
   ApexXAxis,
+  ApexTooltip,
+  ApexMarkers,
 } from 'ng-apexcharts';
-
 
 @Component({
   selector: 'app-linearchart',
@@ -23,7 +24,7 @@ import {
 export class LinearchartComponent implements OnInit {
   @Input() chart: Chart;
   @Input() height: number = 200;
-  @Input() color: string = '#4fd1c5';
+  @Input() color: string  = '#4fd1c5';
 
   apexChart: ApexChart;
   apexGrid: ApexGrid = {
@@ -43,8 +44,9 @@ export class LinearchartComponent implements OnInit {
   xaxis: ApexXAxis = {
     type: 'datetime',
   };
-
   series: ApexAxisChartSeries; 
+  tooltip: ApexTooltip;
+  markers: ApexMarkers;
 
   public user;
 
@@ -64,22 +66,37 @@ export class LinearchartComponent implements OnInit {
         toolbar: {
           show: false,
          },
+      };
+      this.tooltip = {
+        x: {
+          show: true,
+          format: 'dd MMM',
+          formatter: undefined,
+      },
+      y: {
+          formatter: (value) => value + ' $',
+          title: {
+              formatter: (seriesName) => seriesName,
+          },
+      },
       }
     this.series = [
       {
-        name: "serie1",
+        name: "Value",
         data: this.chart.data
       }
     ]
     this.fill = {
       colors: [this.color],
     }
+    this.markers = {
+      colors: [this.color]
+    }
     this.stroke = {
       colors: [this.color],
       width: 3
     }
     if (this.chart.xaxis) {
-      console.log(this.chart)
       this.xaxis = this.chart.xaxis;
     }
   }

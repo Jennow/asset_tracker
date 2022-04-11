@@ -1,18 +1,9 @@
 
 <ng-container *ngIf="chart">
-    <app-piechart  *ngIf="(chart.type === 'pie' || chart.type === 'donut') else nopiechart"
+    <app-piechart  *ngIf="(chart.type === 'pie' || chart.type === 'donut') else linearchart"
         [chart]="chart"
         [height]="height"
     ></app-piechart>
-
-    <ng-template #nopiechart>
-        <ng-container *ngIf="(chart.type === 'candlestick') else linearchart">
-            <app-candlestickchart
-                [chart]="chart"
-            >
-            </app-candlestickchart>
-        </ng-container>
-    </ng-template>
 
     <ng-template #linearchart>
         <app-linearchart
