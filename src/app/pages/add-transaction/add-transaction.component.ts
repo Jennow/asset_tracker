@@ -38,7 +38,7 @@ export class AddTransactionComponent implements OnInit {
 
     const transaction = {
       amount: this.amount,
-      createdate: date.toUTCString(),
+      createdate: date.toISOString(),
       asset: this.selectedAsset,
       status: 1,
     };

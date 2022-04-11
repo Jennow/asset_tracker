@@ -76,7 +76,7 @@ export class TransactionService extends AbstractCollectionService {
         }
 
         put.amount += transaction.amount;
-        put.sum = Math.round(transaction.amount * exchangeRate * 100) / 100,;
+        put.sum = Math.round(transaction.amount * exchangeRate * 100) / 100;
         return this.http.put(url, put);
       })
     )

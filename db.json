@@ -12,7 +12,7 @@
       "highlighted": true,
       "performance": 80,
       "amount": 0.001,
-      "sum": 690.063,
+      "sum": 690.06,
       "history": [
         {
           "date": "2022-01-01T18:25:43.511Z",
@@ -30,8 +30,14 @@
       "platform": "Trade Republic",
       "highlighted": true,
       "performance": 8,
-      "amount": 50,
-      "sum": 542.55
+      "amount": 50.1,
+      "sum": 29,
+      "history": [
+        {
+          "date": "2022-01-01T18:25:43.511Z",
+          "amount": 20
+        }
+      ]
     },
     {
       "id": 3,
@@ -45,25 +51,30 @@
       "highlighted": true,
       "amount": 10,
       "sum": 200,
-      "history": []
+      "history": [
+        {
+          "date": "2022-01-01T18:25:43.511Z",
+          "amount": 2
+        }
+      ]
     },
     {
       "id": 4,
-      "identifier": "TSL",
-      "name": "Tesla Stock",
-      "icon": "fad fa-charging-station",
-      "type": "stock",
+      "identifier": "ethereum",
+      "name": "Ethereum",
+      "icon": "fab fa-ethereum",
+      "type": "crypto",
       "subtype": "static",
       "currencyId": 1,
-      "platform": "Trade Republic",
-      "performance": 1000,
+      "platform": "Binance",
       "highlighted": true,
-      "amount": 0.2,
-      "sum": 100,
+      "performance": 80,
+      "amount": 102,
+      "sum": 301,
       "history": [
         {
-          "date": "2022-04-11",
-          "amount": 50
+          "date": "2022-01-01T18:25:43.511Z",
+          "amount": 0.001
         }
       ]
     }

@@ -88,11 +88,8 @@ export class CryptohistoryService extends HistoryService {
     history.forEach(coinCapHistoryItem => {
 
       let historItemDate = new Date(coinCapHistoryItem.date);
-      const lastValidCoinCapHistoryItem = this.getLastValidHistoryItem(historItemDate, history) as CoinCapHistoryItem;
+      const lastValidCoinCapHistoryItem  = this.getLastValidHistoryItem(historItemDate, history) as CoinCapHistoryItem;
       const lastValidPersonalHistoryItem = this.getLastValidHistoryItem(historItemDate, asset.history) as AssetHistoryItem;
-
-      console.log(lastValidCoinCapHistoryItem.date); 
-      console.log(lastValidPersonalHistoryItem.date); 
 
       personalHistory.push({
         date: lastValidCoinCapHistoryItem.date,
