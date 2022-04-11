@@ -13,13 +13,14 @@ export class AddTransactionComponent implements OnInit {
   assets:Array<Asset>;
   amount:number;
   selectedAsset:Asset;
-  date:string;
+  dateString:string;
 
   
   constructor(private _router: Router, private assetService: AssetService, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
-    this.date = new Date().toISOString().split('T')[0];
+    const date      = new Date()
+    this.dateString = date.toISOString().split('T')[0];
     this.assetService.getAssets().subscribe((assets) => {
       this.assets = assets
     });
@@ -27,13 +28,17 @@ export class AddTransactionComponent implements OnInit {
 
   saveTransaction() {
     // TODO: Beautify form validation
-    if (!this.selectedAsset || !this.amount || !this.date) {
+    if (!this.selectedAsset || !this.amount || !this.dateString) {
       alert('Please fill out form!');
       return;
     }
+
+    const pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+    const date = new Date(this.dateString.replace(pattern,'$3-$2-$1'));
+
     const transaction = {
       amount: this.amount,
-      createdate: this.date,
+      createdate: date.toUTCString(),
       asset: this.selectedAsset,
       status: 1,
     };

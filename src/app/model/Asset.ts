@@ -1,10 +1,7 @@
 import { AssetType } from "../enums/AssetType";
+import { AssetHistoryItem } from "./AssetHistoryItem";
 import { Currency } from "./Currency";
 
-interface AssetHistory {
-    date: string,
-    amount: number,
-}
 export interface Asset {
     id?: number,
     identifier: string
@@ -18,5 +15,5 @@ export interface Asset {
     sum: number,
     amount: number,
     performance: number,
-    history: Array<AssetHistory>
+    history: Array<AssetHistoryItem>
 }

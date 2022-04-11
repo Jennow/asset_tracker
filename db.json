@@ -12,27 +12,11 @@
       "highlighted": true,
       "performance": 80,
       "amount": 0.001,
-      "sum": 12690.063,
+      "sum": 690.063,
       "history": [
         {
-          "date": "2022-04-05T18:25:43.511Z",
-          "amount": 30
-        },
-        {
-          "date": "2022-04-04T18:25:43.511Z",
-          "amount": 19
-        },
-        {
-          "date": "2022-04-03T18:25:43.511Z",
-          "amount": 20
-        },
-        {
-          "date": "2022-04-01T18:25:43.511Z",
-          "amount": 18
-        },
-        {
-          "date": "2022-04-11",
-          "amount": 0.3
+          "date": "2022-01-01T18:25:43.511Z",
+          "amount": 0.001
         }
       ]
     },
@@ -75,7 +59,7 @@
       "performance": 1000,
       "highlighted": true,
       "amount": 0.2,
-      "sum": 17100,
+      "sum": 100,
       "history": [
         {
           "date": "2022-04-11",
@@ -125,85 +109,22 @@
       "id": 1,
       "assetId": 1,
       "createdate": "2012-04-23T18:25:43.511Z",
-      "value": 100,
+      "amount": 100,
       "status": 1
     },
     {
       "id": 2,
       "assetId": 2,
       "createdate": "2022-04-01T18:25:43.511Z",
-      "value": -80,
+      "amount": -80,
       "status": 1
     },
     {
       "id": 3,
       "assetId": 2,
       "createdate": "2022-04-02T18:25:43.511Z",
-      "value": 100,
+      "amount": 100,
       "status": 1
-    },
-    {
-      "id": 4,
-      "assetId": 3,
-      "createdate": "2022-04-03T18:25:43.511Z",
-      "value": -50,
-      "status": 0
-    },
-    {
-      "id": 5,
-      "assetId": 1,
-      "createdate": "2022-04-04T18:25:43.511Z",
-      "value": 100,
-      "status": 1
-    },
-    {
-      "id": 6,
-      "assetId": 3,
-      "createdate": "2022-04-05T18:25:43.511Z",
-      "value": 300,
-      "status": 1
-    },
-    {
-      "value": 0.6,
-      "createdate": "2022-04-10",
-      "assetId": 1,
-      "status": 1,
-      "id": 8
-    },
-    {
-      "value": 3,
-      "createdate": "2022-04-10",
-      "assetId": 3,
-      "status": 1,
-      "id": 9
-    },
-    {
-      "value": 3,
-      "createdate": "2022-04-10",
-      "assetId": 3,
-      "status": 1,
-      "id": 10
-    },
-    {
-      "value": 0.3,
-      "createdate": "2022-04-11",
-      "status": 1,
-      "assetId": 1,
-      "id": 11
-    },
-    {
-      "value": 3,
-      "createdate": "2022-04-11",
-      "status": 1,
-      "assetId": 2,
-      "id": 12
-    },
-    {
-      "value": 50,
-      "createdate": "2022-04-11",
-      "status": 1,
-      "assetId": 4,
-      "id": 13
     }
   ]
 }
