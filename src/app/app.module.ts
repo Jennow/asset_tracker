@@ -21,7 +21,7 @@ import { UserService } from './services/collections/user.service';
 import { LinearchartComponent } from './components/chart/linearchart/linearchart.component';
 import { PiechartComponent } from './components/chart/piechart/piechart.component';
 import { ApiService } from './services/api.service';
-import { AbstractCollectionService } from './services/collections/abstractcollection.service';
+import { CollectionService } from './services/collections/collection.service';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddTransactionComponent } from './pages/add-transaction/add-transaction.component';
@@ -64,7 +64,7 @@ const appRoutes: Routes = [
     FormsModule
   ],
   providers: [
-    AbstractCollectionService,
+    CollectionService,
     UserService,
     ApiService
   ],

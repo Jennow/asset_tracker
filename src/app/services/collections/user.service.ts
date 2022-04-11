@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/model/User';
 import { ApiService } from '../api.service';
-import { AbstractCollectionService } from './abstractcollection.service';
+import { CollectionService } from './collection.service';
 
 @Injectable({
   providedIn: 'root'

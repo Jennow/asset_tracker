@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TimeformatService } from 'src/app/services/timeformat.service';
 
 import { LinearchartComponent } from './linearchart.component';
 
@@ -8,6 +10,10 @@ describe('LinearChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        // TimeformatService
+      ],
       declarations: [ LinearchartComponent ]
     })
     .compileComponents();

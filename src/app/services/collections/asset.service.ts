@@ -3,13 +3,13 @@ import { Observable, of, switchMap } from 'rxjs';
 import { AssetType } from 'src/app/enums/AssetType';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Asset } from '../../model/Asset';
-import { AbstractCollectionService } from './abstractcollection.service';
+import { CollectionService } from './collection.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AssetService extends AbstractCollectionService {
+export class AssetService extends CollectionService {
 
   /**
    * @param filter 

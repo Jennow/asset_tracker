@@ -4,14 +4,14 @@ import { Observable, switchMap } from 'rxjs';
 import { Asset } from 'src/app/model/Asset';
 import { Transaction } from '../../model/Transaction';
 import { ApiService } from '../api.service';
-import { AbstractCollectionService } from './abstractcollection.service';
+import { CollectionService } from './collection.service';
 import { AssetService } from './asset.service';
 import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TransactionService extends AbstractCollectionService {
+export class TransactionService extends CollectionService {
   
   constructor(override http:HttpClient,  override apiService:ApiService, override userService:UserService, protected assetService: AssetService) { 
     super(http, apiService, userService)

@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AbstractCollectionService {
+export class CollectionService {
 
   constructor(protected http:HttpClient,  protected apiService:ApiService,protected userService:UserService) { 
   }
