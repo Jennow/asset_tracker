@@ -11,12 +11,16 @@
       "platform": "Binance",
       "highlighted": true,
       "performance": 80,
-      "amount": 0.001,
-      "sum": 690.06,
+      "amount": 0.1,
+      "sum": 3981.79,
       "history": [
         {
           "date": "2022-01-01T18:25:43.511Z",
-          "amount": 0.001
+          "amount": 0
+        },
+        {
+          "date": "2022-04-12T00:00:00.000Z",
+          "amount": 0.1
         }
       ]
     },
@@ -30,12 +34,12 @@
       "platform": "Trade Republic",
       "highlighted": true,
       "performance": 8,
-      "amount": 50.1,
-      "sum": 29,
+      "amount": 0,
+      "sum": 0,
       "history": [
         {
           "date": "2022-01-01T18:25:43.511Z",
-          "amount": 20
+          "amount": 0
         }
       ]
     },
@@ -49,12 +53,16 @@
       "platform": "Trade Republic",
       "performance": -0.8,
       "highlighted": true,
-      "amount": 10,
-      "sum": 200,
+      "amount": 1,
+      "sum": 301,
       "history": [
         {
           "date": "2022-01-01T18:25:43.511Z",
-          "amount": 2
+          "amount": 0
+        },
+        {
+          "date": "2022-04-12T00:00:00.000Z",
+          "amount": 1
         }
       ]
     },
@@ -69,12 +77,12 @@
       "platform": "Binance",
       "highlighted": true,
       "performance": 80,
-      "amount": 102,
-      "sum": 301,
+      "amount": 0,
+      "sum": 0,
       "history": [
         {
           "date": "2022-01-01T18:25:43.511Z",
-          "amount": 0.001
+          "amount": 0
         }
       ]
     }
@@ -136,6 +144,20 @@
       "createdate": "2022-04-02T18:25:43.511Z",
       "amount": 100,
       "status": 1
+    },
+    {
+      "amount": 0.1,
+      "createdate": "2022-04-12T00:00:00.000Z",
+      "status": 1,
+      "assetId": 1,
+      "id": 4
+    },
+    {
+      "amount": 1,
+      "createdate": "2022-04-12T00:00:00.000Z",
+      "status": 1,
+      "assetId": 3,
+      "id": 5
     }
   ]
 }

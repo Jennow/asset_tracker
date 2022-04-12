@@ -7,6 +7,10 @@ import { ApiService } from '../api.service';
 import { CollectionService } from './collection.service';
 import { AssetService } from './asset.service';
 import { UserService } from './user.service';
+import { HistoryItem } from 'src/app/model/HistoryItem';
+import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
+import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
+import { HistoryFormattingService } from '../histories/historyformatting.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +25,7 @@ export class TransactionService extends CollectionService {
    * @returns Observable<Transaction[]>
    */
   getTransactions(): Observable<Transaction[]> {
-    const url = this.apiService.getApiUrl() + 'transactions?_expand=asset';
+    const url:string = this.apiService.getApiUrl() + 'transactions?_expand=asset';
     return this.http.get<Transaction[]>(url);
   }
 
@@ -34,45 +38,36 @@ export class TransactionService extends CollectionService {
    * @returns 
    */
   saveTransaction(transaction:Transaction) {
-    const url    = this.apiService.getApiUrl() + 'transactions?_expand=asset';
-    var post     = transaction as any;
-    post.assetId = transaction.asset.id;
-    const asset  = transaction.asset;
+    const url:string   = this.apiService.getApiUrl() + 'transactions?_expand=asset';
+    var post:any       = transaction;
+    const asset: Asset = transaction.asset;
+
+    post.assetId       = transaction.asset.id;
     delete(post.asset);
 
     return this.http.post(url, post).pipe(
       switchMap((value: Object, index: number) => {
-        const url = this.apiService.getApiUrl() + 'assets/' + asset.id;
-        return this.http.get(url);
-      }),
-      switchMap((value: Object, index: number) => {
-        return this.assetService.getExchangeRate(value as Asset)
+        return this.assetService.getExchangeRate(asset)
       }),
       switchMap((exchangeRate: number, index: number) => {
+        console.log(exchangeRate);
         const url = this.apiService.getApiUrl() + 'assets/' + asset.id;
-        let put = asset;
+        let put   = asset;
 
-        put.history = asset.history.sort((a,b) => {
-          let aDate = new Date(a.date).toDateString();
-          let bDate = new Date(b.date).toDateString();
-          return (aDate > bDate) ? 1 : ((bDate > aDate) ? -1 : 0);
-        });
+        put.history = HistoryFormattingService.sortHistory(asset.history) as AssetHistoryItem[];
+        let existingHistoryItemIndex = HistoryFormattingService.findItemByDate(put.history, transaction.createdate)
 
-        let existingHistoryItemIndex = put.history.findIndex((historyItem) => {
-            let historyItemDate = new Date(historyItem.date).toDateString();
-            let transactionDate = new Date(transaction.createdate).toDateString();
-            return historyItemDate === transactionDate;
-        });
-
-        if (existingHistoryItemIndex > -1) {
-          for(let i = index; i < put.history.length; i++) {
-            put.history[i].amount += transaction.amount
-          }
-        } else {
+        if (existingHistoryItemIndex === -1) {
           put.history.push({
             date: transaction.createdate,
             amount: transaction.amount
           });
+          put.history = HistoryFormattingService.sortHistory(asset.history) as AssetHistoryItem[];
+          existingHistoryItemIndex = 1 + HistoryFormattingService.findItemByDate(put.history, transaction.createdate)
+        }
+
+        for(let i = existingHistoryItemIndex; i < put.history.length; i++) {
+          put.history[i].amount += transaction.amount
         }
 
         put.amount += transaction.amount;

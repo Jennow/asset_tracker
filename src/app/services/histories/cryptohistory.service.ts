@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { ChartType } from 'src/app/enums/ChartType';
@@ -6,16 +7,19 @@ import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
 import { Chart } from 'src/app/model/Chart';
 import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { HistoryItem } from 'src/app/model/HistoryItem';
-
-import { HistoryService } from './history.service';
+import { ApiService } from '../api.service';
+import { UserService } from '../collections/user.service';
+import { HistoryFormattingService } from './historyformatting.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CryptohistoryService extends HistoryService {
+
+export class CryptohistoryService {
 
   private lastMonth: Date;
-
+  constructor(protected http:HttpClient,  protected apiService:ApiService, protected userService:UserService) { 
+  }
   /**
    * Get exchangerate history for asset from crypto market api
    * @param asset
@@ -23,7 +27,7 @@ export class CryptohistoryService extends HistoryService {
    */
   getHistory(asset:Asset): Observable<any> {
     const apiUrl   = 'https://api.coincap.io';
-    let now:Date       = new Date();
+    let now:Date   = new Date();
     this.lastMonth = new Date();
     this.lastMonth.setMonth(now.getMonth() - 1);
 
@@ -61,7 +65,7 @@ export class CryptohistoryService extends HistoryService {
       let assetHistory = this.calculatePersonalHistoryForAsset(histories, asset)
       combinedHistory  = this.combineMultipleHistories(combinedHistory, assetHistory);
     });
-    const chartData = this.formatHistoryForLinearChart(combinedHistory);
+    const chartData = HistoryFormattingService.formatHistoryForLinearChart(combinedHistory);
 
     return {
       title: 'Your crypto assets',
@@ -106,6 +110,7 @@ export class CryptohistoryService extends HistoryService {
    * @returns CoinCapHistoryItem
    */
      getLastValidHistoryItem(date: Date, history:Array<CoinCapHistoryItem|AssetHistoryItem>): CoinCapHistoryItem|AssetHistoryItem {
+
       return history.reduce(function(prev, current) {
         let currentDate = new Date(current.date);
         let prevDate    = new Date(prev.date);

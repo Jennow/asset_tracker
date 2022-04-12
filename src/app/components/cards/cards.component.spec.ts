@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApiService } from 'src/app/services/api.service';
+import { AssetService } from 'src/app/services/collections/asset.service';
 
 import { CardsComponent } from './cards.component';
 
@@ -8,7 +10,10 @@ describe('CardsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardsComponent ]
+      declarations: [ CardsComponent ],
+      providers: [
+        AssetService,
+      ]
     })
     .compileComponents();
   });
