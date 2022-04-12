@@ -50,7 +50,6 @@ export class TransactionService extends CollectionService {
         return this.assetService.getExchangeRate(asset)
       }),
       switchMap((exchangeRate: number, index: number) => {
-        console.log(exchangeRate);
         const url = this.apiService.getApiUrl() + 'assets/' + asset.id;
         let put   = asset;
 
