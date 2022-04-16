@@ -6,7 +6,9 @@ describe('TimeformatService', () => {
   let service: TimeformatService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [TimeformatService]
+    });
     service = TestBed.inject(TimeformatService);
   });
 

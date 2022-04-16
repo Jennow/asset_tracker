@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { OverviewComponent } from './overview.component';
+import { ApiService } from 'src/app/services/api.service';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('OverviewComponent', () => {
   let component: OverviewComponent;
@@ -9,8 +11,10 @@ describe('OverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
+      providers: [
+        HttpClient,
+        HttpHandler,
+        ApiService
       ],
       declarations: [ OverviewComponent ]
     })

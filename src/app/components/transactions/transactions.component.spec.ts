@@ -1,4 +1,9 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApiService } from 'src/app/services/api.service';
+import { TransactionService } from 'src/app/services/collections/transaction.service';
+import { UserService } from 'src/app/services/collections/user.service';
+import { TimeformatService } from 'src/app/services/timeformat.service';
 
 import { TransactionsComponent } from './transactions.component';
 
@@ -8,7 +13,15 @@ describe('TransactionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransactionsComponent ]
+      declarations: [ TransactionsComponent ],
+      providers: [
+        TransactionService,
+        TimeformatService,
+        UserService,
+        HttpClient,
+        HttpHandler,
+        ApiService
+      ]
     })
     .compileComponents();
   });

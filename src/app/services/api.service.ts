@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 
 Injectable({
   providedIn: 'root'
 })
 
+@NgModule (
+  
+)
 export class ApiService {
   private apiUrl:string = 'http://localhost:5000/'
   private headers:Array<any> = [];

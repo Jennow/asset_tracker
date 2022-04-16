@@ -40,20 +40,20 @@ export class PiechartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.apexChart = 
-    {
-      // height: this.height,
-      width: '100%',
-      type: this.chart.type as ChartType,
-      sparkline: {
-        enabled: true
-      },
-      toolbar: {
-        show: false,
-       },
+    if (this.chart) {
+      this.apexChart = {
+        // height: this.height,
+        width: '100%',
+        type: this.chart.type as ChartType,
+        sparkline: {
+          enabled: true
+        },
+        toolbar: {
+          show: false,
+         },
+      }
+      this.series = this.chart.data
+      this.labels = this.chart.labels as string[]
     }
-    this.series = this.chart.data
-    this.labels = this.chart.labels as string[]
   }
-
 }

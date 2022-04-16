@@ -1,5 +1,8 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApiService } from 'src/app/services/api.service';
+import { UserService } from 'src/app/services/collections/user.service';
 import { TimeformatService } from 'src/app/services/timeformat.service';
 
 import { LinearchartComponent } from './linearchart.component';
@@ -10,8 +13,11 @@ describe('LinearChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
+      providers: [
+        HttpClient,
+        HttpHandler,
+        ApiService,
+        UserService
         // TimeformatService
       ],
       declarations: [ LinearchartComponent ]
@@ -20,6 +26,7 @@ describe('LinearChartComponent', () => {
   });
 
   beforeEach(() => {
+
     fixture = TestBed.createComponent(LinearchartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -21,6 +21,7 @@ export class TransactionService extends CollectionService {
     super(http, apiService, userService)
   }
 
+  
   /**
    * @returns Observable<Transaction[]>
    */
