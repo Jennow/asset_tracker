@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Asset } from 'src/app/model/Asset';
 import { AssetService } from 'src/app/services/collections/asset.service';
 
@@ -9,15 +9,10 @@ import { AssetService } from 'src/app/services/collections/asset.service';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  cards: Asset[] = [];
+  @Input() assets: Asset[];
 
-  constructor(private assetService: AssetService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.assetService.getCards().subscribe((cards) => {
-        this.cards = cards;
-      }
-    );
-  }
+  ngOnInit(): void {}
 
 }
