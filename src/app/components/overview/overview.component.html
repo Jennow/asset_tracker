@@ -20,6 +20,6 @@
             </div>
         </div>
         <div>
-            <app-chart [chart]="chart"></app-chart>
+            <app-chart *ngIf="summary" [chart]="summary.piechart"></app-chart>
         </div>
     </div></div>

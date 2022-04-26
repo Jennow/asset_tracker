@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { CHARTS } from 'src/app/mock-charts';
 import { Asset } from 'src/app/model/Asset';
 import { Chart } from 'src/app/model/Chart';
-import { AssetService } from 'src/app/services/collections/asset.service';
 import { CryptohistoryService } from 'src/app/services/histories/cryptohistory.service';
 
 @Component({
@@ -12,14 +11,14 @@ import { CryptohistoryService } from 'src/app/services/histories/cryptohistory.s
 })
 export class AssetsummariesComponent implements OnInit {
   charts: Chart[] = [CHARTS[0]];
+  @Input() assets: Asset[];
 
-  constructor(private assetService: AssetService, private cryprohistoryService: CryptohistoryService) { }
+  constructor(private cryprohistoryService: CryptohistoryService) { }
 
-  ngOnInit(): void {
-    this.assetService.getAssets('?type=crypto&_expand=currency&_embed=assethistories').subscribe((assets:Array<Asset>) => {
-      this.cryprohistoryService.getHistories(assets).subscribe((historyDataArray:Array<any>) => {
-        this.charts.push(this.cryprohistoryService.generateGraphFromHistories(historyDataArray, assets));
-      });
+  ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges) {
+    this.cryprohistoryService.getHistories(this.assets).subscribe((historyDataArray:Array<any>) => {
+      this.charts.push(this.cryprohistoryService.generateGraphFromHistories(historyDataArray, this.assets));
     });
   }
 }

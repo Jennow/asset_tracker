@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Asset } from 'src/app/model/Asset';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Chart } from 'src/app/model/Chart';
-import { AssetService } from 'src/app/services/collections/asset.service';
 import { UserService } from 'src/app/services/collections/user.service';
 
 @Component({
@@ -13,17 +12,13 @@ import { UserService } from 'src/app/services/collections/user.service';
 
 export class OverviewComponent implements OnInit {
   chart:Chart;
-  summary: AssetSummary;
+  @Input() assets: Asset[];
+  @Input() summary: AssetSummary;
   public user;
 
-  constructor(private userService: UserService, private assetService: AssetService) { 
+  constructor(private userService: UserService) { 
     this.user = this.userService.getUser();
   }
 
-  ngOnInit(): void {
-    this.assetService.getAssets().subscribe((assets: Array<Asset>) => {
-      this.summary = this.assetService.getSummary(assets);
-      this.chart   = this.summary.piechart;
-    });
-  }
+  ngOnInit(): void {}
 }

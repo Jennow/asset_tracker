@@ -55,31 +55,35 @@ export class LinearchartComponent implements OnInit {
   }
   
   ngOnInit(): void {
+   
+  }
+
+  ngOnChange():void {
     this.apexChart = 
-      {
-        height: this.height,
-        width: '100%',
-        type: this.chart.type as ChartType,
-        sparkline: {
-          enabled: true
+    {
+      height: this.height,
+      width: '100%',
+      type: this.chart.type as ChartType,
+      sparkline: {
+        enabled: true
+      },
+      toolbar: {
+        show: false,
+       },
+    };
+    this.tooltip = {
+      x: {
+        show: true,
+        format: 'dd MMM',
+        formatter: undefined,
+    },
+    y: {
+        formatter: (value) => value + ' $',
+        title: {
+            formatter: (seriesName) => seriesName,
         },
-        toolbar: {
-          show: false,
-         },
-      };
-      this.tooltip = {
-        x: {
-          show: true,
-          format: 'dd MMM',
-          formatter: undefined,
-      },
-      y: {
-          formatter: (value) => value + ' $',
-          title: {
-              formatter: (seriesName) => seriesName,
-          },
-      },
-      }
+    },
+    }
     this.series = [
       {
         name: "Value",

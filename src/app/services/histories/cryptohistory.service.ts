@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
+import { AssetType } from 'src/app/enums/AssetType';
 import { ChartType } from 'src/app/enums/ChartType';
 import { Asset } from 'src/app/model/Asset';
 import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
@@ -45,6 +46,7 @@ export class CryptohistoryService {
    * @returns Observable<Array<Asset>>
    */
   getHistories(assets:Array<Asset>): Observable<Array<Asset>> {
+    assets = assets.filter(asset => asset.type === AssetType.crypto);
     var observables = assets.map(
       (asset: Asset) => this.getHistory(asset));
     return forkJoin(observables);
@@ -57,6 +59,7 @@ export class CryptohistoryService {
    * @returns Chart
    */
   generateGraphFromHistories(historyDataArray:Array<any>, assets:Array<Asset>): Chart {
+    assets = assets.filter(asset => asset.type === AssetType.crypto);
     var combinedHistory: Array<HistoryItem> = [];
 
     assets.forEach((asset:Asset, index:number) => {

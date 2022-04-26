@@ -15,7 +15,7 @@ export class TransactionsComponent implements OnInit {
   public user: User|null;
 
   constructor( private transactionService:TransactionService, private userService: UserService) {
-    this.user = userService.getUser();
+    this.user = this.userService.getUser();
   }
 
   ngOnInit(): void {

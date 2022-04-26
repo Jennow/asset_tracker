@@ -1,4 +1,4 @@
-    <app-overview></app-overview>
+    <app-overview [assets]="assets" [summary]="summary"></app-overview>
     <div class="mt-6">
         <app-cards [assets]="assets"></app-cards>
     </div>
@@ -6,7 +6,7 @@
     <div class="mt-6">
     </div>    
     <div class="mt-6">
-        <app-charts></app-charts>
+        <app-charts [assets]="assets"></app-charts>
     </div>
 
     <div class="grid grid-cols-4 gap-6">
