@@ -1,0 +1,26 @@
+
+<div
+class="min-w-fit lg:w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+bg-white p-6 shadow-sm">
+    <form (ngSubmit)="login()">
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">
+                Username
+            </label>
+            <input [(ngModel)]="username" type="text" name="username" id="username"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="amount">
+                Password
+            </label>
+            <input [(ngModel)]="password" type="password" name="password" id="password"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="flex items-center justify-end">
+            <button class="w-full bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Login
+            </button>
+        </div>
+    </form>
+</div>

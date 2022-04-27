@@ -8,10 +8,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Input() open: boolean;
   @Output() toggleMobileSidebar: EventEmitter<null> = new EventEmitter();
+  @Output() setLoggedIn: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    this.setLoggedIn.emit(false);
   }
 
   slideSideBar() {

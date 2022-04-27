@@ -25,6 +25,7 @@ import { CollectionService } from './services/collections/collection.service';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddTransactionComponent } from './pages/add-transaction/add-transaction.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     LinearchartComponent,
     PiechartComponent,
     DashboardComponent,
-    AddTransactionComponent
+    AddTransactionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

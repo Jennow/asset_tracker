@@ -9,6 +9,7 @@ export class SidebarlinkComponent implements OnInit {
   @Input() url: string;
   @Input() title: string;
   @Input() icon: string;
+  @Input() twClass: string;
   @Input() disabled: boolean;
 
   constructor() { }
