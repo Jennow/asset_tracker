@@ -1,6 +1,5 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { ApiService } from '../api.service';
 
 import { TransactionService } from './transaction.service';
 
@@ -9,7 +8,7 @@ describe('TransactionService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler, ApiService]
+      providers: [HttpClient, HttpHandler]
     });
     service = TestBed.inject(TransactionService);
   });

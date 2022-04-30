@@ -4,6 +4,7 @@ import { AssetType } from 'src/app/enums/AssetType';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Asset } from '../../model/Asset';
 import { CollectionService } from './collection.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AssetService extends CollectionService {
    * @returns Observable<Asset[]>
    */
   getAssets(filter:string = ''): Observable<Asset[]> {
-    const url = this.apiService.getApiUrl() + 'assets' + filter;
+    const url = environment.apiUrl + 'assets' + filter;
+
     return this.http.get<Asset[]>(url)
   }
 

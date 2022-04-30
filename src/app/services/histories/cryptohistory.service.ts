@@ -8,7 +8,6 @@ import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
 import { Chart } from 'src/app/model/Chart';
 import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { HistoryItem } from 'src/app/model/HistoryItem';
-import { ApiService } from '../api.service';
 import { UserService } from '../collections/user.service';
 import { HistoryFormattingService } from './historyformatting.service';
 
@@ -19,7 +18,7 @@ import { HistoryFormattingService } from './historyformatting.service';
 export class CryptohistoryService {
 
   private lastMonth: Date;
-  constructor(protected http:HttpClient,  protected apiService:ApiService, protected userService:UserService) { 
+  constructor(protected http:HttpClient, protected userService:UserService) { 
   }
   /**
    * Get exchangerate history for asset from crypto market api
@@ -68,6 +67,7 @@ export class CryptohistoryService {
       let assetHistory = this.calculatePersonalHistoryForAsset(histories, asset)
       combinedHistory  = this.combineMultipleHistories(combinedHistory, assetHistory);
     });
+
     const chartData = HistoryFormattingService.formatHistoryForLinearChart(combinedHistory);
 
     return {

@@ -1,4 +1,3 @@
-import { ConstantPool } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { UserService } from './services/collections/user.service';
@@ -13,7 +12,7 @@ export class AppComponent {
   loggedIn:boolean = false;
 
   constructor(private router: Router, private userService: UserService) {
-    router.events.forEach((event) => {
+    this.router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
         this.toggleMobileSidebar(false);
       }

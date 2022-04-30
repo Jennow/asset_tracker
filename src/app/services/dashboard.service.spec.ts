@@ -1,16 +1,19 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { CryptohistoryService } from './cryptohistory.service';
+import { DashboardService } from './dashboard.service';
 
-describe('CryptohistoryService', () => {
-  let service: CryptohistoryService;
+describe('DashboardService', () => {
+  let service: DashboardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler]
+      providers: [
+        HttpClient,
+        HttpHandler
+      ]
     });
-    service = TestBed.inject(CryptohistoryService);
+    service = TestBed.inject(DashboardService);
   });
 
   it('should be created', () => {

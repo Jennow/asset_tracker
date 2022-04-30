@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
 import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { HistoryItem } from 'src/app/model/HistoryItem';
-import { ApiService } from '../api.service';
 import { UserService } from '../collections/user.service';
 
 @Injectable({

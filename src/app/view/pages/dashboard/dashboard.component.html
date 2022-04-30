@@ -1,0 +1,25 @@
+<div *ngIf="dashboard; else loading">
+    <app-overview [assets]="dashboard.userAssets" [summary]="dashboard.overview"></app-overview>
+    <div class="mt-6">
+        <app-cards [assets]="dashboard.userAssets"></app-cards>
+    </div>
+
+    <div class="mt-6">
+    </div>    
+    <div class="mt-6">
+        <app-assetsummaries [assets]="dashboard.userAssets" [histories]="dashboard.personalizedHistories"></app-assetsummaries>
+    </div>
+
+    <div class="grid grid-cols-4 gap-6">
+        <div class="card col-span-4 lg:col-span-3 mt-6">
+            <app-transactions [transactions]="dashboard.transactions"></app-transactions>
+        </div>
+        <div class="card col-span-4 lg:col-span-1 lg:mt-6">
+            <app-teaser></app-teaser>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    LOADING :)
+</ng-template>

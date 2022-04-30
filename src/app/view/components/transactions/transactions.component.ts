@@ -1,0 +1,26 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Transaction } from 'src/app/model/Transaction';
+import { TimeformatService } from 'src/app/services/timeformat.service';
+import { TransactionService } from 'src/app/services/collections/transaction.service';
+import { UserService } from 'src/app/services/collections/user.service';
+import { User } from 'src/app/model/User';
+
+@Component({
+  selector: 'app-transactions',
+  templateUrl: './transactions.component.html',
+  styleUrls: ['./transactions.component.css']
+})
+export class TransactionsComponent implements OnInit {
+  @Input() transactions: Transaction[] = [];
+  public user: User|null;
+
+  constructor(private userService: UserService) {
+    this.user = this.userService.getUser();
+  }
+
+  ngOnInit(): void {
+    this.transactions.forEach((transaction, index) => {
+      this.transactions[index].ago = TimeformatService.ago(transaction.createdate);
+    });
+  }
+}

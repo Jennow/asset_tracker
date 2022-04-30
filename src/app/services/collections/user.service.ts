@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/model/User';
-import { ApiService } from '../api.service';
-import { CollectionService } from './collection.service';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +12,10 @@ export class UserService {
 
   private user: User|null = null;
 
-  constructor(protected http:HttpClient,  protected apiService:ApiService) { 
+  constructor(protected http:HttpClient) { 
   }
 
-  login(username:string, password:string) {
-    // TODO: Let all API calls run over the ral api instead of json server
+  login(username:string, password:string):Observable<any> {
     const url  = environment.apiUrl + '/login';
     return this.http.post<any>(url, {username, password});
   }
@@ -41,5 +39,9 @@ export class UserService {
     } 
 
     return null;
+  }
+
+  getToken():string | null {
+    return localStorage.getItem('token');
   }
 }

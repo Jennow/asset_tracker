@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from '../api.service';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -8,6 +7,6 @@ import { UserService } from './user.service';
 })
 export class CollectionService {
 
-  constructor(protected http:HttpClient,  protected apiService:ApiService,protected userService:UserService) { 
+  constructor(protected http:HttpClient,protected userService:UserService) { 
   }
 }

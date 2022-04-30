@@ -3,22 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 import { Asset } from 'src/app/model/Asset';
 import { Transaction } from '../../model/Transaction';
-import { ApiService } from '../api.service';
 import { CollectionService } from './collection.service';
 import { AssetService } from './asset.service';
 import { UserService } from './user.service';
-import { HistoryItem } from 'src/app/model/HistoryItem';
 import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
-import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { HistoryFormattingService } from '../histories/historyformatting.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService extends CollectionService {
   
-  constructor(override http:HttpClient,  override apiService:ApiService, override userService:UserService, protected assetService: AssetService) { 
-    super(http, apiService, userService)
+  constructor(override http:HttpClient, override userService:UserService, protected assetService: AssetService) { 
+    super(http, userService)
   }
 
   
@@ -26,7 +24,7 @@ export class TransactionService extends CollectionService {
    * @returns Observable<Transaction[]>
    */
   getTransactions(): Observable<Transaction[]> {
-    const url:string = this.apiService.getApiUrl() + 'transactions?_expand=asset';
+    const url:string = environment.apiUrl + 'transactions?_expand=asset';
     return this.http.get<Transaction[]>(url);
   }
 
@@ -39,7 +37,7 @@ export class TransactionService extends CollectionService {
    * @returns 
    */
   saveTransaction(transaction:Transaction) {
-    const url:string   = this.apiService.getApiUrl() + 'transactions?_expand=asset';
+    const url:string   = environment.apiUrl + 'transactions?';
     var post:any       = transaction;
     const asset: Asset = transaction.asset;
 
@@ -50,30 +48,31 @@ export class TransactionService extends CollectionService {
       switchMap((value: Object, index: number) => {
         return this.assetService.getExchangeRate(asset)
       }),
-      switchMap((exchangeRate: number, index: number) => {
-        const url = this.apiService.getApiUrl() + 'assets/' + asset.id;
-        let put   = asset;
+      // TODO: update history in API, not in frontend!!!
+      // switchMap((exchangeRate: number, index: number) => {
+      //   const url = environment.apiUrl + 'assets/' + asset.id;
+      //   let put   = asset;
 
-        put.history = HistoryFormattingService.sortHistory(asset.history) as AssetHistoryItem[];
-        let existingHistoryItemIndex = HistoryFormattingService.findItemByDate(put.history, transaction.createdate)
+      //   put.history = HistoryFormattingService.sortHistory(asset.history) as AssetHistoryItem[];
+      //   let existingHistoryItemIndex = HistoryFormattingService.findItemByDate(put.history, transaction.createdate)
 
-        if (existingHistoryItemIndex === -1) {
-          put.history.push({
-            date: transaction.createdate,
-            amount: transaction.amount
-          });
-          put.history = HistoryFormattingService.sortHistory(asset.history) as AssetHistoryItem[];
-          existingHistoryItemIndex = 1 + HistoryFormattingService.findItemByDate(put.history, transaction.createdate)
-        }
+      //   if (existingHistoryItemIndex === -1) {
+      //     put.history.push({
+      //       date: transaction.createdate,
+      //       amount: transaction.amount
+      //     });
+      //     put.history = HistoryFormattingService.sortHistory(asset.history) as AssetHistoryItem[];
+      //     existingHistoryItemIndex = 1 + HistoryFormattingService.findItemByDate(put.history, transaction.createdate)
+      //   }
 
-        for(let i = existingHistoryItemIndex; i < put.history.length; i++) {
-          put.history[i].amount += transaction.amount
-        }
+      //   for(let i = existingHistoryItemIndex; i < put.history.length; i++) {
+      //     put.history[i].amount += transaction.amount
+      //   }
 
-        put.amount += transaction.amount;
-        put.sum = Math.round(transaction.amount * exchangeRate * 100) / 100;
-        return this.http.put(url, put);
-      })
+      //   put.amount += transaction.amount;
+      //   put.sum = Math.round(transaction.amount * exchangeRate * 100) / 100;
+      //   return this.http.put(url, put);
+      // })
     )
   }
 }
