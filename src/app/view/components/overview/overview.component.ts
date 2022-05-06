@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Asset } from 'src/app/model/Asset';
+import { UserAsset } from 'src/app/model/UserAsset';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Chart } from 'src/app/model/Chart';
 import { UserService } from 'src/app/services/collections/user.service';
@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/collections/user.service';
 
 export class OverviewComponent implements OnInit {
   chart:Chart;
-  @Input() assets: Asset[];
+  @Input() assets: UserAsset[];
   @Input() summary: AssetSummary;
   public user;
 

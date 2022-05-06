@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AssetService } from 'src/app/services/collections/asset.service';
+import { UserassetService } from 'src/app/services/collections/userasset.service';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -11,7 +11,7 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DashboardComponent ],
-      providers: [AssetService, HttpClient, HttpHandler]
+      providers: [UserassetService, HttpClient, HttpHandler]
     })
     .compileComponents();
   });

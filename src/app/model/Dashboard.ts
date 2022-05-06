@@ -1,4 +1,4 @@
-import { Asset } from "./Asset";
+import { UserAsset } from "./UserAsset";
 import { CoinCapHistoryItem } from "./CoinCapHistoryItem";
 import { HistoryItem } from "./HistoryItem";
 import { Transaction } from "./Transaction";
@@ -9,7 +9,7 @@ interface History {
 }
 
 export interface Dashboard {
-    userAssets: Asset[],
+    userAssets: UserAsset[],
     personalizedHistories: History[],
     overview: any,
     transactions: Transaction[],

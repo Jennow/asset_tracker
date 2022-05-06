@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
-import { Asset } from 'src/app/model/Asset';
+import { UserAsset } from 'src/app/model/UserAsset';
 import { Transaction } from '../../model/Transaction';
 import { CollectionService } from './collection.service';
-import { AssetService } from './asset.service';
+import { UserassetService } from './userasset.service';
 import { UserService } from './user.service';
 import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
 import { HistoryFormattingService } from '../histories/historyformatting.service';
@@ -15,7 +15,7 @@ import { environment } from '../../../environments/environment';
 })
 export class TransactionService extends CollectionService {
   
-  constructor(override http:HttpClient, override userService:UserService, protected assetService: AssetService) { 
+  constructor(override http:HttpClient, override userService:UserService, protected assetService: UserassetService) { 
     super(http, userService)
   }
 
@@ -37,11 +37,11 @@ export class TransactionService extends CollectionService {
    * @returns 
    */
   saveTransaction(transaction:Transaction) {
-    const url:string   = environment.apiUrl + 'transactions?';
-    var post:any       = transaction;
-    const asset: Asset = transaction.asset;
+    const url:string       = environment.apiUrl + 'transactions?';
+    var post:any           = transaction;
+    const asset: UserAsset = transaction.userasset;
 
-    post.assetId       = transaction.asset.id;
+    post.userassetid       = transaction.userasset.id;
     delete(post.asset);
 
     return this.http.post(url, post).pipe(

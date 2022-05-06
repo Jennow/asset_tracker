@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
 import { AssetType } from 'src/app/enums/AssetType';
 import { AssetSummary } from 'src/app/model/AssetSummary';
-import { Asset } from '../../model/Asset';
+import { UserAsset } from '../../model/UserAsset';
 import { CollectionService } from './collection.service';
 import { environment } from '../../../environments/environment';
 
@@ -10,23 +10,23 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 
-export class AssetService extends CollectionService {
+export class UserassetService extends CollectionService {
 
   /**
    * @param filter 
    * @returns Observable<Asset[]>
    */
-  getAssets(filter:string = ''): Observable<Asset[]> {
-    const url = environment.apiUrl + 'assets' + filter;
+  getAssets(filter:string = ''): Observable<UserAsset[]> {
+    const url = environment.apiUrl + 'userassets' + filter;
 
-    return this.http.get<Asset[]>(url)
+    return this.http.get<UserAsset[]>(url)
   }
 
   /**
    * Get assets with the parameter highlighted set to true
    * @returns Observable<Asset[]> 
    */
-  getCards(): Observable<Asset[]> {
+  getCards(): Observable<UserAsset[]> {
     return this.getAssets('?highlighted=true')
   }
   
@@ -35,12 +35,12 @@ export class AssetService extends CollectionService {
    * @param assets 
    * @returns AssetSummary
    */
-  getSummary(assets: Array<Asset>): AssetSummary {
+  getSummary(assets: Array<UserAsset>): AssetSummary {
     let total = 0;
     let chartData:Array<number> = [];
     let labels:Array<string> = [];
 
-    assets.forEach((asset: Asset) =>  {
+    assets.forEach((asset: UserAsset) =>  {
         total += asset.sum
         chartData.push(asset.sum)
         labels.push(asset.name)
@@ -66,7 +66,7 @@ export class AssetService extends CollectionService {
    * @param asset 
    * @returns Observable<number>
    */
-  getExchangeRate(asset:Asset):Observable<number> {
+  getExchangeRate(asset:UserAsset):Observable<number> {
     if (asset.type === AssetType.crypto) {
       const apiUrl = 'https://api.coincap.io';
       return this.http.get(apiUrl + '/v2/assets/' + asset.identifier).pipe(

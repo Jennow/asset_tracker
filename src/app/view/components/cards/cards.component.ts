@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Asset } from 'src/app/model/Asset';
+import { UserAsset } from 'src/app/model/UserAsset';
 
 @Component({
   selector: 'app-cards',
@@ -7,7 +7,7 @@ import { Asset } from 'src/app/model/Asset';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  @Input() assets: Asset[];
+  @Input() assets: UserAsset[];
 
   constructor() { }
 

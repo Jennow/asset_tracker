@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Asset } from 'src/app/model/Asset';
-import { AssetService } from 'src/app/services/collections/asset.service';
+import { UserAsset } from 'src/app/model/UserAsset';
+import { UserassetService } from 'src/app/services/collections/userasset.service';
 import { TransactionService } from 'src/app/services/collections/transaction.service';
 
 @Component({
@@ -10,13 +10,13 @@ import { TransactionService } from 'src/app/services/collections/transaction.ser
   styleUrls: ['./add-transaction.component.css']
 })
 export class AddTransactionComponent implements OnInit {
-  assets:Array<Asset>;
+  assets:Array<UserAsset>;
   amount:number;
-  selectedAsset:Asset;
+  selectedAsset:UserAsset;
   dateString:string;
 
   
-  constructor(private _router: Router, private assetService: AssetService, private transactionService: TransactionService) { }
+  constructor(private _router: Router, private assetService: UserassetService, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
     const date      = new Date()
@@ -39,7 +39,7 @@ export class AddTransactionComponent implements OnInit {
     const transaction = {
       amount: this.amount,
       createdate: date.toISOString(),
-      asset: this.selectedAsset,
+      userasset: this.selectedAsset,
       status: 1,
     };
     this.transactionService.saveTransaction(transaction).subscribe((response) => {

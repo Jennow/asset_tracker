@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { AssetType } from 'src/app/enums/AssetType';
 import { ChartType } from 'src/app/enums/ChartType';
-import { Asset } from 'src/app/model/Asset';
+import { UserAsset } from 'src/app/model/UserAsset';
 import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
 import { Chart } from 'src/app/model/Chart';
 import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
@@ -25,7 +25,7 @@ export class CryptohistoryService {
    * @param asset
    * @returns Observable<any>
    */
-  getHistory(asset:Asset): Observable<any> {
+  getHistory(asset:UserAsset): Observable<any> {
     const apiUrl   = 'https://api.coincap.io';
     let now:Date   = new Date();
     this.lastMonth = new Date();
@@ -44,10 +44,10 @@ export class CryptohistoryService {
    * @param assets 
    * @returns Observable<Array<Asset>>
    */
-  getHistories(assets:Array<Asset>): Observable<Array<Asset>> {
+  getHistories(assets:Array<UserAsset>): Observable<Array<UserAsset>> {
     assets = assets.filter(asset => asset.type === AssetType.crypto);
     var observables = assets.map(
-      (asset: Asset) => this.getHistory(asset));
+      (asset: UserAsset) => this.getHistory(asset));
     return forkJoin(observables);
   }
 
@@ -57,11 +57,11 @@ export class CryptohistoryService {
    * @param assets 
    * @returns Chart
    */
-  generateGraphFromHistories(historyDataArray:Array<any>, assets:Array<Asset>): Chart {
+  generateGraphFromHistories(historyDataArray:Array<any>, assets:Array<UserAsset>): Chart {
     assets = assets.filter(asset => asset.type === AssetType.crypto);
     var combinedHistory: Array<HistoryItem> = [];
 
-    assets.forEach((asset:Asset, index:number) => {
+    assets.forEach((asset:UserAsset, index:number) => {
       let histories: Array<CoinCapHistoryItem> = historyDataArray[index].data;
       
       let assetHistory = this.calculatePersonalHistoryForAsset(histories, asset)
@@ -90,7 +90,7 @@ export class CryptohistoryService {
    * @param asset 
    * @returns Array<HistoryItem>
    */
-   calculatePersonalHistoryForAsset(history:Array<CoinCapHistoryItem>, asset:Asset): Array<HistoryItem>{
+   calculatePersonalHistoryForAsset(history:Array<CoinCapHistoryItem>, asset:UserAsset): Array<HistoryItem>{
     let personalHistory: Array<HistoryItem> = [];
     history.forEach(coinCapHistoryItem => {
 
@@ -112,7 +112,7 @@ export class CryptohistoryService {
    * @param history 
    * @returns CoinCapHistoryItem
    */
-     getLastValidHistoryItem(date: Date, history:Array<CoinCapHistoryItem|AssetHistoryItem>): CoinCapHistoryItem|AssetHistoryItem {
+     getLastValidHistoryItem(date: Date, history:Array<CoinCapHistoryItem|AssetHistoryItem> = []): CoinCapHistoryItem|AssetHistoryItem {
 
       return history.reduce(function(prev, current) {
         let currentDate = new Date(current.date);

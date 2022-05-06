@@ -1,8 +1,8 @@
-import { Asset } from "./Asset";
+import { UserAsset } from "./UserAsset";
 
 export interface Transaction {
     id?: number,
-    asset: Asset,
+    userasset: UserAsset,
     createdate: string,
     amount: number,
     status: number,

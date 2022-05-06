@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { CHARTS } from 'src/app/mock-charts';
-import { Asset } from 'src/app/model/Asset';
+import { UserAsset } from 'src/app/model/UserAsset';
 import { Chart } from 'src/app/model/Chart';
 import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { CryptohistoryService } from 'src/app/services/histories/cryptohistory.service';
@@ -12,7 +12,7 @@ import { CryptohistoryService } from 'src/app/services/histories/cryptohistory.s
 })
 export class AssetsummariesComponent implements OnInit {
   charts: Chart[] = [CHARTS[0]];
-  @Input() assets: Asset[];
+  @Input() assets: UserAsset[];
   @Input() histories: CoinCapHistoryItem[] | any[];
 
   constructor(private cryprohistoryService: CryptohistoryService) { }

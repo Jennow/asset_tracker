@@ -1,16 +1,16 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { AssetService } from './asset.service';
+import { UserassetService } from './userasset.service';
 
-describe('AssetService', () => {
-  let service: AssetService;
+describe('UserassetService', () => {
+  let service: UserassetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [HttpClient, HttpHandler]
     });
-    service = TestBed.inject(AssetService);
+    service = TestBed.inject(UserassetService);
   });
 
   it('should be created', () => {
