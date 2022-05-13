@@ -31,11 +31,11 @@ export class ChartService {
           "type": "pie",
           "data": chartData,
           "labels": labels,
-          "sum": 300,
+          "sum": total,
       } as Chart;   
     }
 
-    /**
+  /**
    * Generate linear data of array. Used in assetsummaries component
    * @param chartData 
    * @returns Chart

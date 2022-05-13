@@ -16,7 +16,7 @@ import { Chart } from 'src/app/model/Chart';
 export class PiechartComponent implements OnInit {
   @Input() chart: Chart;
   @Input() type: ChartType = 'pie';
-  @Input() height: number = 300;
+  @Input() height: number;
   
   series: ApexNonAxisChartSeries; 
   apexChart: ApexChart;
@@ -42,7 +42,7 @@ export class PiechartComponent implements OnInit {
   ngOnInit(): void {
     if (this.chart) {
       this.apexChart = {
-        // height: this.height,
+        height: this.height ? this.height : 400,
         width: '100%',
         type: this.chart.type as ChartType,
         sparkline: {

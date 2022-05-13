@@ -19,7 +19,8 @@
                 <p class="text-black"><span [ngClass]="summary.performanceLastYear >= 0 ? 'text-green-400': 'text-red-400'"  class="text-green-400">{{ summary.performanceLastYear }}%</span> in comparison to last year.</p>
             </div>
         </div>
-        <div>
+        <div class="p-8">
             <app-chart *ngIf="chart" [chart]="chart"></app-chart>
         </div>
-    </div></div>
+    </div>
+</div>
