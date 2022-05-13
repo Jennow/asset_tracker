@@ -4,6 +4,9 @@ import { UserAsset } from 'src/app/model/UserAsset';
 import { Chart } from 'src/app/model/Chart';
 import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { CryptohistoryService } from 'src/app/services/histories/cryptohistory.service';
+import { ChartService } from 'src/app/services/chart.service';
+import { HistoryFormattingService } from 'src/app/services/histories/historyformatting.service';
+import { HistoryItem } from 'src/app/model/HistoryItem';
 
 @Component({
   selector: 'app-assetsummaries',
@@ -15,13 +18,13 @@ export class AssetsummariesComponent implements OnInit {
   @Input() assets: UserAsset[];
   @Input() histories: CoinCapHistoryItem[] | any[];
 
-  constructor(private cryprohistoryService: CryptohistoryService) { }
+  constructor(private cryprohistoryService: CryptohistoryService, private chartService: ChartService) { }
 
   ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges) {
-    this.cryprohistoryService.getHistories(this.assets).subscribe((historyDataArray:Array<any>) => {
-      this.charts.push(this.cryprohistoryService.generateGraphFromHistories(historyDataArray, this.assets));
-      console.log(this.charts);
+    this.histories.forEach(history => {
+      const chartData = HistoryFormattingService.formatHistoryForLinearChart(history.data);
+      this.charts.push(this.chartService.getLinearChart(chartData));      
     });
   }
 }

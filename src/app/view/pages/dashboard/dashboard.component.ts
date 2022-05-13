@@ -4,6 +4,7 @@ import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Dashboard } from 'src/app/model/Dashboard';
 import { UserassetService } from 'src/app/services/collections/userasset.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import { Chart } from 'src/app/model/Chart';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.dashboardService.getDashboard().subscribe((dashboard) => {
       this.dashboard = dashboard;
-      this.dashboard.overview = this.assetService.getSummary(dashboard.userAssets);
       console.log(this.dashboard.overview);
     });
   }

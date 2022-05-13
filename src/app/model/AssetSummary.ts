@@ -1,8 +1,8 @@
-import { Chart } from "./Chart";
+import { PieChartItem } from "./charts/PieChartItem";
 
 export interface AssetSummary {
     sum: number,
-    comparisonLastMonth: number,
-    comparisonLastYear: number,
-    piechart: Chart
+    performanceLastMonth: number,
+    performanceLastYear: number,
+    sumsPerUserasset: PieChartItem[]
 }

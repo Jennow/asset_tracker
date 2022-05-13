@@ -19,6 +19,9 @@ export class CryptohistoryService {
 
   private lastMonth: Date;
   constructor(protected http:HttpClient, protected userService:UserService) { 
+    let now:Date   = new Date();
+    this.lastMonth = new Date();
+    this.lastMonth.setMonth(now.getMonth() - 1);
   }
   /**
    * Get exchangerate history for asset from crypto market api
@@ -28,9 +31,6 @@ export class CryptohistoryService {
   getHistory(asset:UserAsset): Observable<any> {
     const apiUrl   = 'https://api.coincap.io';
     let now:Date   = new Date();
-    this.lastMonth = new Date();
-    this.lastMonth.setMonth(now.getMonth() - 1);
-
     const url = apiUrl + '/v2/assets/' 
       + asset.identifier +'/history?interval=d1&start='        
       + this.lastMonth.getTime() 
@@ -96,11 +96,12 @@ export class CryptohistoryService {
 
       let historItemDate = new Date(coinCapHistoryItem.date);
       const lastValidCoinCapHistoryItem  = this.getLastValidHistoryItem(historItemDate, history) as CoinCapHistoryItem;
-      const lastValidPersonalHistoryItem = this.getLastValidHistoryItem(historItemDate, asset.history) as AssetHistoryItem;
 
+      // const lastValidPersonalHistoryItem = this.getLastValidHistoryItem(historItemDate, asset.history) as AssetHistoryItem;
+      let amount = 2;
       personalHistory.push({
         date: lastValidCoinCapHistoryItem.date,
-        close: Math.round(lastValidCoinCapHistoryItem.priceUsd * lastValidPersonalHistoryItem.amount * 100) / 100,
+        close: Math.round(lastValidCoinCapHistoryItem.priceUsd * amount * 100) / 100,
       } as HistoryItem)
     });
     return personalHistory;
@@ -112,8 +113,7 @@ export class CryptohistoryService {
    * @param history 
    * @returns CoinCapHistoryItem
    */
-     getLastValidHistoryItem(date: Date, history:Array<CoinCapHistoryItem|AssetHistoryItem> = []): CoinCapHistoryItem|AssetHistoryItem {
-
+     getLastValidHistoryItem(date: Date, history:Array<any> = []): CoinCapHistoryItem|AssetHistoryItem {
       return history.reduce(function(prev, current) {
         let currentDate = new Date(current.date);
         let prevDate    = new Date(prev.date);

@@ -3,6 +3,7 @@ import { UserAsset } from 'src/app/model/UserAsset';
 import { AssetSummary } from 'src/app/model/AssetSummary';
 import { Chart } from 'src/app/model/Chart';
 import { UserService } from 'src/app/services/collections/user.service';
+import { ChartService } from 'src/app/services/chart.service';
 
 @Component({
   selector: 'app-overview',
@@ -14,11 +15,17 @@ export class OverviewComponent implements OnInit {
   chart:Chart;
   @Input() assets: UserAsset[];
   @Input() summary: AssetSummary;
+
   public user;
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService, private chartService: ChartService) { 
     this.user = this.userService.getUser();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.assets) {
+      this.chart = this.chartService.getPiechart(this.summary.sumsPerUserasset);
+    }
+  }
+  
 }

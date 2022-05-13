@@ -5,6 +5,7 @@ import { AssetSummary } from 'src/app/model/AssetSummary';
 import { UserAsset } from '../../model/UserAsset';
 import { CollectionService } from './collection.service';
 import { environment } from '../../../environments/environment';
+import { Chart } from 'src/app/model/Chart';
 
 @Injectable({
   providedIn: 'root'
@@ -30,36 +31,6 @@ export class UserassetService extends CollectionService {
     return this.getAssets('?highlighted=true')
   }
   
-  /**
-   * Generate summary data of asset array. Used in overview component
-   * @param assets 
-   * @returns AssetSummary
-   */
-  getSummary(assets: Array<UserAsset>): AssetSummary {
-    let total = 0;
-    let chartData:Array<number> = [];
-    let labels:Array<string> = [];
-
-    assets.forEach((asset: UserAsset) =>  {
-        total += asset.sum
-        chartData.push(asset.sum)
-        labels.push(asset.name)
-    });
-    return {
-      sum: Math.round(total * 100) / 100,
-      comparisonLastMonth: -10, // TODO: Get this value fom history
-      comparisonLastYear: 2,    // TODO: Get this value from history
-      piechart: {
-        "title": "assets",
-        "icon": "fa-store",
-        "type": "pie",
-        "data": chartData,
-        "labels": labels,
-        "sum": 300,
-      }
-    } as AssetSummary;   
-  }
-
   /**
    * Get Exchange rate of asset
    * TODO: replace mock stock exchange rate with real api request

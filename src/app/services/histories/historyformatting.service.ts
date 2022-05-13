@@ -62,10 +62,10 @@ export class HistoryFormattingService {
    * @param history 
    * @returns 
    */
-  static formatHistoryForLinearChart(history:Array<HistoryItem>): Array<Array<any>> {
+  static formatHistoryForLinearChart(history:Array<any>): Array<Array<any>> {
     let chartData:Array<Array<any>> = [];
-    history.forEach((element:HistoryItem) => {
-      chartData.push([element.date, element.close])
+    history.forEach((element:any) => {
+      chartData.push([element.date, element.priceUsd])
     });
     return chartData;
   }
