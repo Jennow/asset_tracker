@@ -1,9 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AssetHistoryItem } from 'src/app/model/AssetHistoryItem';
-import { CoinCapHistoryItem } from 'src/app/model/CoinCapHistoryItem';
 import { HistoryItem } from 'src/app/model/HistoryItem';
-import { UserService } from '../collections/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +9,12 @@ import { UserService } from '../collections/user.service';
 export class HistoryFormattingService {
 
   /**
-   * Sort any history by date in ascending order
-   * @param history 
-   * @returns 
-   */
-  static sortHistory(history:AssetHistoryItem[]|HistoryItem[]|CoinCapHistoryItem[]) {
-    return history.sort((a,b) => {
-      let aDate = new Date(a.date);
-      let bDate = new Date(b.date);
-      return (aDate > bDate) ? 1 : ((bDate > aDate) ? -1 : 0);
-    });
-  }
-
-  /**
    * Find a history item by date
    * @param history 
    * @param date 
    * @returns number
    */
-  static findItemByDate(history:AssetHistoryItem[]|HistoryItem[]|CoinCapHistoryItem[], date:string):number {
+  static findItemByDate(history:AssetHistoryItem[]|HistoryItem[], date:string):number {
     return history.findIndex((historyItem) => {
       let historyItemDate = new Date(historyItem.date).toDateString();
       let transactionDate = new Date(date).toDateString();
@@ -65,7 +49,7 @@ export class HistoryFormattingService {
   static formatHistoryForLinearChart(history:Array<any>): Array<Array<any>> {
     let chartData:Array<Array<any>> = [];
     history.forEach((element:any) => {
-      chartData.push([element.date, element.priceUsd])
+      chartData.push([element.date, element.close])
     });
     return chartData;
   }

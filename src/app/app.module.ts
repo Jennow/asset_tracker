@@ -13,7 +13,6 @@ import { CardComponent } from './view/components/cards/card/card.component';
 import { CardsComponent } from './view/components/cards/cards.component';
 import { TeaserComponent } from './view/components/teaser/teaser.component';
 import { ChartComponent } from './view/components/chart/chart.component';
-import { AssetsummariesComponent } from './view/components/assetsummaries/assetsummaries.component';
 import { OverviewComponent } from './view/components/overview/overview.component';
 import { TransactionsComponent } from './view/components/transactions/transactions.component';
 import { SidebarlinkComponent } from './view/components/sidebar/sidebarlink/sidebarlink.component';
@@ -46,7 +45,6 @@ const appRoutes: Routes = [
     CardsComponent,
     TeaserComponent,
     ChartComponent,
-    AssetsummariesComponent,
     OverviewComponent,
     TransactionsComponent,
     SidebarlinkComponent,
